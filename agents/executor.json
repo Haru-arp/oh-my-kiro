@@ -25,7 +25,9 @@
     },
     "execute_bash": {
       "autoAllowReadonly": true
-    }
+    ,
+  "useLegacyMcpJson": true
+}
   },
   "resources": [
     "file://.kiro/steering/PRINCIPLES.md",
@@ -35,4 +37,6 @@
     "skill://.kiro/skills/tdd/SKILL.md"
   ],
   "model": "claude-opus-4.6"
+,
+  "useLegacyMcpJson": true
 }

@@ -21,11 +21,15 @@
   "toolsSettings": {
     "execute_bash": {
       "autoAllowReadonly": true
-    }
+    ,
+  "useLegacyMcpJson": true
+}
   },
   "resources": [
     "file://.kiro/steering/ORCHESTRATION.md",
     "file://.kiro/steering/RALPH.md"
   ],
   "model": "claude-opus-4.6"
+,
+  "useLegacyMcpJson": true
 }
