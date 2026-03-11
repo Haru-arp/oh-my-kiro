@@ -17,11 +17,15 @@ omk doctor
 
 # 3. Kiro 시작
 kiro-cli chat
+# → Oh My Kiro의 default 에이전트가 자동 활성화됨
+# → 왼쪽 상단에 [default] 표시 확인
 
 # 4. 스킬 사용
 $team 3:executor "작업"
 $autopilot "기능 구현"
 ```
+
+**중요:** `omk setup`은 `.kiro/settings.json`을 생성하여 Oh My Kiro의 `default` 에이전트를 자동으로 활성화합니다. Built-in `kiro_default`가 아닌 Oh My Kiro의 오케스트레이터가 사용됩니다.
 
 자세한 내용: [GETTING_STARTED.md](GETTING_STARTED.md)
 
