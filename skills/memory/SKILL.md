@@ -1,7 +1,7 @@
 ---
 name: memory
 description: "세션 메모리 관리. 컨텍스트 보존, 세션 요약, handoff. 트리거: $memory, /handoff, 세션 종료"
-model: claude-sonnet-4-5
+model: claude-sonnet-4.5
 ---
 
 # Memory - 세션 메모리 관리
