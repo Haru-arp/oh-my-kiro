@@ -16,20 +16,18 @@
     "code",
     "grep",
     "glob",
-    "use_subagent"
+    "use_subagent",
+    "@Figma Desktop"
   ],
   "toolsSettings": {
     "execute_bash": {
       "autoAllowReadonly": true
-    ,
-  "includeMcpJson": true
-}
+    }
   },
   "resources": [
     "file://.kiro/steering/ORCHESTRATION.md",
     "file://.kiro/steering/RALPH.md"
   ],
-  "model": "claude-opus-4.6"
-,
+  "model": "claude-opus-4.6",
   "includeMcpJson": true
 }
