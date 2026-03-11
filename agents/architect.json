@@ -9,12 +9,7 @@
     "glob",
     "use_subagent"
   ],
-  "allowedTools": [
-    "fs_read",
-    "code",
-    "grep",
-    "glob"
-  ],
+  "allowedTools": [],
   "resources": [
     "file://.kiro/steering/PRINCIPLES.md",
     "file://.kiro/steering/AGENTS.md",

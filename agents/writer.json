@@ -9,13 +9,7 @@
     "grep",
     "glob"
   ],
-  "allowedTools": [
-    "fs_read",
-    "fs_write",
-    "code",
-    "grep",
-    "glob"
-  ],
+  "allowedTools": [],
   "toolsSettings": {
     "fs_write": {
       "allowedPaths": ["**/*.md", "**/docs/**/*", "**/README*"]

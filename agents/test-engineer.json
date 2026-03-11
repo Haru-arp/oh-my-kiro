@@ -10,14 +10,7 @@
     "grep",
     "glob"
   ],
-  "allowedTools": [
-    "fs_read",
-    "fs_write",
-    "execute_bash",
-    "code",
-    "grep",
-    "glob"
-  ],
+  "allowedTools": [],
   "toolsSettings": {
     "fs_write": {
       "allowedPaths": ["**/*.test.*", "**/*.spec.*", "**/tests/**", "**/__tests__/**"]

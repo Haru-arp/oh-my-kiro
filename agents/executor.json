@@ -11,14 +11,7 @@
     "glob",
     "use_subagent"
   ],
-  "allowedTools": [
-    "fs_read",
-    "fs_write",
-    "execute_bash",
-    "code",
-    "grep",
-    "glob"
-  ],
+  "allowedTools": [],
   "toolsSettings": {
     "fs_write": {
       "allowedPaths": ["**/*"]

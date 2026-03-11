@@ -8,12 +8,7 @@
     "code",
     "grep"
   ],
-  "allowedTools": [
-    "fs_read",
-    "execute_bash",
-    "code",
-    "grep"
-  ],
+  "allowedTools": [],
   "toolsSettings": {
     "execute_bash": {
       "autoAllowReadonly": true
