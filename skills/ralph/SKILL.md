@@ -6,44 +6,42 @@ model: claude-sonnet-4-5
 
 # Ralph 루프 - 완료까지 지속 실행
 
-작업을 완료할 때까지 자동으로 계속 실행합니다.
+**사용자가 명시적으로 요청할 때만** 작업을 완료할 때까지 자동으로 계속 실행합니다.
+
+## 트리거
+
+- `$ralph "작업 설명"`
+- "랄프 모드로 해줘"
+- "완료까지 계속해"
+- "멈추지 말고 끝까지"
 
 ## 사용법
 
 ```bash
-$ralph "REST API 인증 구현"
-$ralph "모든 ESLint 경고 수정" --max-iterations=50
+$ralph "현재 작업을 완료할 때까지 계속"
 ```
+
+**중요:** 사용자가 `$ralph`를 명시하지 않으면 Ralph 루프를 시작하지 마세요.
 
 ## 동작 방식
 
 ### 1. 목표 설정
-```
-목표: REST API 인증 구현
-검증: npm test && curl localhost:3000/api/auth
-```
+사용자가 제시한 작업 목표를 명확히 파악합니다.
 
 ### 2. 반복 실행
 ```
 🔄 [Ralph 반복 1/100]
-   시도: JWT 토큰 생성 로직 구현
-   검증: npm test
-   결과: 3개 테스트 실패
-   다음: 토큰 검증 로직 수정
-
-🔄 [Ralph 반복 2/100]
-   시도: 토큰 검증 로직 수정
-   검증: npm test
-   결과: 모든 테스트 통과
-   다음: 완료 확인
+   시도: {수행한 작업}
+   검증: {검증 방법}
+   결과: {검증 결과}
+   다음: {다음 시도}
 ```
 
 ### 3. 완료 감지
 ```
 ✅ [Ralph 완료]
-   총 반복: 2회
+   총 반복: N회
    최종 상태: 모든 검증 통과
-   소요 시간: 5분
 ```
 
 ## 완료 조건
@@ -56,8 +54,7 @@ $ralph "모든 ESLint 경고 수정" --max-iterations=50
 
 ### 명시적 완료
 ```bash
-# 작업 완료 선언
-echo "DONE: 인증 구현 완료" > .omk/state/ralph-done.txt
+echo "DONE" > .omk/state/ralph-done.txt
 ```
 
 ### 중단 조건
@@ -76,39 +73,42 @@ echo "DONE: 인증 구현 완료" > .omk/state/ralph-done.txt
 └── ralph-done.txt         # 완료 플래그
 ```
 
-### ralph-active.json
+### ralph-active.json 구조
 ```json
 {
-  "goal": "REST API 인증 구현",
-  "startTime": "2026-03-11T18:00:00Z",
-  "iteration": 2,
+  "goal": "사용자가 요청한 작업",
+  "startTime": "ISO 8601 timestamp",
+  "iteration": 1,
   "maxIterations": 100,
-  "lastAction": "토큰 검증 로직 수정",
-  "lastResult": "모든 테스트 통과",
-  "verification": "npm test && curl localhost:3000/api/auth"
+  "lastAction": "마지막 수행 작업",
+  "lastResult": "마지막 결과",
+  "verification": "검증 명령어"
 }
 ```
 
 ## 검증 전략
 
 ### 자동 검증
+프로젝트 타입에 따라 자동으로 적절한 검증 실행:
+
 ```bash
-# 테스트 실행
+# Node.js 프로젝트
 npm test
-
-# 빌드 확인
 npm run build
-
-# 린트 확인
 npm run lint
 
-# 타입 체크
-npm run type-check
+# Python 프로젝트
+pytest
+python -m mypy .
+
+# Rust 프로젝트
+cargo test
+cargo build
 ```
 
 ### 커스텀 검증
 ```bash
-$ralph "API 구현" --verify="npm test && curl -f localhost:3000/health"
+$ralph "작업 설명" --verify="custom-command"
 ```
 
 ## 실패 처리
@@ -121,39 +121,31 @@ $ralph "API 구현" --verify="npm test && curl -f localhost:3000/health"
 ```
 
 ### 에러 분석
-```
-🔍 [Ralph 분석]
-   에러: TypeError: Cannot read property 'id' of undefined
-   위치: src/auth/token.ts:42
-   원인: user 객체가 null
-   해결: null 체크 추가
-```
+각 실패 시 에러를 분석하고 다음 시도에 반영합니다.
 
 ## 진행 상황 표시
 
 ### 실시간 업데이트
 ```
-🔄 [Ralph 진행 중] 2/100
-   ⏱️  경과: 5분
-   📊 진행률: 60%
-   🎯 다음: 토큰 만료 처리
+🔄 [Ralph 진행 중] N/100
+   ⏱️  경과: X분
+   🎯 다음: {다음 작업}
 ```
 
 ### 완료 리포트
 ```
 ✅ [Ralph 완료 리포트]
-   목표: REST API 인증 구현
-   반복: 2회
-   소요: 5분
-   변경: 3개 파일
-   테스트: 15개 통과
+   목표: {작업 목표}
+   반복: N회
+   소요: X분
+   변경: N개 파일
 ```
 
 ## 통합
 
 ### Memory 스킬과 통합
 - Ralph 상태를 세션 메모리에 저장
-- 세션 재시작 시 Ralph 상태 복원
+- 세션 재시작 시 Ralph 상태 복원 가능
 
 ### Verification 스킬과 통합
 - 자동 검증 실행
@@ -162,7 +154,10 @@ $ralph "API 구현" --verify="npm test && curl -f localhost:3000/health"
 ## 규칙
 
 - **모든 응답은 한국어로 작성**
+- **사용자가 `$ralph`를 명시하지 않으면 Ralph 루프를 시작하지 마세요**
 - 검증 없이 완료 주장 금지
 - 최대 반복 횟수 준수
 - 각 반복마다 진행 상황 보고
+- 완료 시 명확한 완료 메시지 출력
+
 
