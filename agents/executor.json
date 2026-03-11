@@ -26,7 +26,7 @@
     "execute_bash": {
       "autoAllowReadonly": true
     ,
-  "useLegacyMcpJson": true
+  "includeMcpJson": true
 }
   },
   "resources": [
@@ -38,5 +38,5 @@
   ],
   "model": "claude-opus-4.6"
 ,
-  "useLegacyMcpJson": true
+  "includeMcpJson": true
 }

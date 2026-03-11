@@ -20,5 +20,5 @@
   ],
   "model": "claude-opus-4.6"
 ,
-  "useLegacyMcpJson": true
+  "includeMcpJson": true
 }

@@ -19,7 +19,7 @@
     "fs_write": {
       "allowedPaths": ["**/*.md", "**/docs/**/*", "**/README*"]
     ,
-  "useLegacyMcpJson": true
+  "includeMcpJson": true
 }
   },
   "resources": [
@@ -27,5 +27,5 @@
   ],
   "model": "claude-opus-4.6"
 ,
-  "useLegacyMcpJson": true
+  "includeMcpJson": true
 }
