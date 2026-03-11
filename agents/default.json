@@ -24,9 +24,8 @@
     }
   },
   "resources": [
-    "file://.omk/memory/session-latest.md",
-    "file://.kiro/steering/**/*.md",
-    "skill://.kiro/skills/**/SKILL.md"
+    "file://.kiro/steering/ORCHESTRATION.md",
+    "file://.kiro/steering/RALPH.md"
   ],
   "model": "claude-opus-4-6"
 }
