@@ -1,7 +1,7 @@
 ---
 name: ralph
 description: "지속 실행 루프. 완료까지 계속. 트리거: 모든 작업 (기본 동작)"
-model: claude-sonnet-4-5
+model: claude-opus-4-6
 ---
 
 # Ralph 루프 - Oh My Kiro의 기본 동작
