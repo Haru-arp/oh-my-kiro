@@ -10,7 +10,14 @@
     "grep",
     "glob"
   ],
-  "allowedTools": [],
+  "allowedTools": [
+    "fs_read",
+    "fs_write",
+    "code",
+    "grep",
+    "glob",
+    "execute_bash"
+  ],
   "toolsSettings": {
     "execute_bash": {
       "autoAllowReadonly": true

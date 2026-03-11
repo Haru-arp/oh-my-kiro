@@ -8,7 +8,12 @@
     "grep",
     "glob"
   ],
-  "allowedTools": [],
+  "allowedTools": [
+    "fs_read",
+    "code",
+    "grep",
+    "glob"
+  ],
   "resources": [
     "skill://.kiro/skills/analyze/SKILL.md"
   ],

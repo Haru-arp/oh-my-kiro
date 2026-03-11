@@ -11,7 +11,13 @@
     "glob",
     "use_subagent"
   ],
-  "allowedTools": [],
+  "allowedTools": [
+    "fs_read",
+    "code",
+    "grep",
+    "glob",
+    "use_subagent"
+  ],
   "toolsSettings": {
     "execute_bash": {
       "autoAllowReadonly": true
