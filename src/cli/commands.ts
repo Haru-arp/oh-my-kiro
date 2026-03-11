@@ -138,6 +138,18 @@ export async function setup(options: { force?: boolean; scope?: 'user' | 'projec
     console.log(`✓ AGENTS.md 설치 (프로젝트 루트)`);
   }
 
+  // .kiro/settings.json 복사 (default 에이전트 지정)
+  const kiroSettingsDir = join(process.cwd(), '.kiro');
+  if (!existsSync(kiroSettingsDir)) {
+    mkdirSync(kiroSettingsDir, { recursive: true });
+  }
+  const settingsSrc = join(__dirname, '..', '..', '.kiro', 'settings.json');
+  const settingsDest = join(kiroSettingsDir, 'settings.json');
+  if (existsSync(settingsSrc) && (!existsSync(settingsDest) || options.force)) {
+    copyFileSync(settingsSrc, settingsDest);
+    console.log(`✓ Kiro 설정 설치 (.kiro/settings.json)`);
+  }
+
   // 설정 파일 생성
   const configPath = join(OMK_STATE, 'config.json');
   if (!existsSync(configPath) || options.force) {
