@@ -26,7 +26,31 @@ $memory load
 └── sessions/
     ├── 2026-03-11-1.md    # 세션 히스토리
     └── 2026-03-11-2.md
+
+.omk/events/
+└── events.jsonl           # 이벤트 로그 (자동 캡처)
 ```
+
+## 이벤트 캡처
+
+모든 중요한 작업이 자동으로 `events.jsonl`에 기록됩니다:
+
+```jsonl
+{"timestamp":"2026-03-11T18:00:00Z","type":"task_start","description":"버그 수정 시작"}
+{"timestamp":"2026-03-11T18:05:00Z","type":"decision","description":"Radix UI 사용 결정"}
+{"timestamp":"2026-03-11T18:10:00Z","type":"file_change","file":"src/Modal.tsx","description":"컴포넌트 리팩토링"}
+{"timestamp":"2026-03-11T18:15:00Z","type":"task_complete","description":"버그 수정 완료"}
+```
+
+**이벤트 타입:**
+- `task_start` - 작업 시작
+- `task_complete` - 작업 완료
+- `decision` - 주요 결정
+- `file_change` - 파일 변경
+- `context` - 컨텍스트 정보
+- `next_task` - 다음 작업
+- `error` - 에러 발생
+- `ralph_iteration` - Ralph 루프 반복
 
 ## 동작
 

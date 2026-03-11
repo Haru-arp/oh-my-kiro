@@ -4,6 +4,9 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { StateManager } from '../state/manager.js';
 import { listAgents } from '../agents/definitions.js';
+import { handoff } from './handoff.js';
+
+export { handoff };
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const HOME = homedir();
@@ -36,7 +39,8 @@ export async function setup(options: { force?: boolean; scope?: 'user' | 'projec
     join(OMK_STATE, 'logs'),
     join(OMK_STATE, 'skills'),  // 로컬 스킬 디렉토리
     join(OMK_STATE, 'memory'),  // 메모리 디렉토리
-    join(OMK_STATE, 'memory', 'sessions')  // 세션 히스토리
+    join(OMK_STATE, 'memory', 'sessions'),  // 세션 히스토리
+    join(OMK_STATE, 'events')  // 이벤트 로그
   ];
 
   dirs.forEach(dir => {

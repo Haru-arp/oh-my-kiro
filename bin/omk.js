@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-import { setup, doctor, listAgentsCommand, statusCommand, cancelCommand, addSkill, listSkills, updateCommand } from '../dist/cli/commands.js';
+import { setup, doctor, listAgentsCommand, statusCommand, cancelCommand, addSkill, listSkills, updateCommand, handoff } from '../dist/cli/commands.js';
 import { TeamOrchestrator } from '../dist/team/orchestrator.js';
 
 const program = new Command();
@@ -46,6 +46,11 @@ program
   .description('Update Oh My Kiro to latest version')
   .option('--force', 'Force update even if already latest')
   .action(updateCommand);
+
+program
+  .command('handoff')
+  .description('Create session summary and handoff to next session')
+  .action(handoff);
 
 program
   .command('team <spec> <task>')

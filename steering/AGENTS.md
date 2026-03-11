@@ -18,8 +18,8 @@
 ## 모델 설정
 
 에이전트별 권장 모델:
-- 고복잡도: `claude-opus-4.6`, `claude-opus-4.5` 또는 `claude-sonnet-4.6`
-- 중복잡도: `claude-sonnet-4.5`
-- 저복잡도: `claude-haiku-4.5` 또는 `claude-sonnet-4.5`
+- 고복잡도: `claude-opus-4-6`, `claude-opus-4-5` 또는 `claude-sonnet-4-6`
+- 중복잡도: `claude-sonnet-4-5`
+- 저복잡도: `claude-haiku-4-5` 또는 `claude-sonnet-4.5`
 
 설정 위치: 각 에이전트 JSON 파일의 `model` 필드
