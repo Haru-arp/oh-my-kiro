@@ -138,17 +138,26 @@ export async function setup(options: { force?: boolean; scope?: 'user' | 'projec
     console.log(`✓ AGENTS.md 설치 (프로젝트 루트)`);
   }
 
-  // .kiro/settings.json 복사 (default 에이전트 지정)
-  const kiroSettingsDir = join(process.cwd(), '.kiro');
+  // .kiro/settings/cli.json에 defaultAgent 추가
+  const kiroSettingsDir = join(process.cwd(), '.kiro', 'settings');
   if (!existsSync(kiroSettingsDir)) {
     mkdirSync(kiroSettingsDir, { recursive: true });
   }
-  const settingsSrc = join(__dirname, '..', '..', '.kiro', 'settings.json');
-  const settingsDest = join(kiroSettingsDir, 'settings.json');
-  if (existsSync(settingsSrc) && (!existsSync(settingsDest) || options.force)) {
-    copyFileSync(settingsSrc, settingsDest);
-    console.log(`✓ Kiro 설정 설치 (.kiro/settings.json)`);
+  
+  const cliJsonPath = join(kiroSettingsDir, 'cli.json');
+  let cliSettings: any = {};
+  
+  if (existsSync(cliJsonPath)) {
+    // 기존 설정 읽기
+    cliSettings = JSON.parse(readFileSync(cliJsonPath, 'utf-8'));
   }
+  
+  // defaultAgent 추가
+  cliSettings['chat.defaultAgent'] = 'default';
+  
+  writeFileSync(cliJsonPath, JSON.stringify(cliSettings, null, 2));
+  console.log(`✓ Kiro 설정 업데이트 (.kiro/settings/cli.json)`);
+
 
   // 설정 파일 생성
   const configPath = join(OMK_STATE, 'config.json');

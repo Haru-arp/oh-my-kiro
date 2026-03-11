@@ -27,5 +27,5 @@
     "file://.kiro/steering/ORCHESTRATION.md",
     "file://.kiro/steering/RALPH.md"
   ],
-  "model": "claude-opus-4-6"
+  "model": "claude-opus-4"
 }
