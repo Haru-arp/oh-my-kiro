@@ -540,15 +540,36 @@ export async function listSkills() {
 
   console.log('📚 설치된 스킬\n');
 
+  let globalCount = 0;
+  let localCount = 0;
+
   // 전역 스킬
   if (existsSync(KIRO_SKILLS)) {
     const globalSkills = readdirSync(KIRO_SKILLS);
     if (globalSkills.length > 0) {
       console.log('🌍 전역 스킬 (~/.kiro/skills/):');
       globalSkills.forEach(skill => {
-        console.log(`  • ${skill}`);
+        const skillFile = join(KIRO_SKILLS, skill, 'SKILL.md');
+        let description = '';
+        if (existsSync(skillFile)) {
+          try {
+            const content = readFileSync(skillFile, 'utf-8');
+            const match = content.match(/description:\s*"([^"]+)"/);
+            if (match) {
+              description = match[1];
+            }
+          } catch (e) {
+            // 무시
+          }
+        }
+        if (description) {
+          console.log(`  • ${skill} - ${description}`);
+        } else {
+          console.log(`  • ${skill}`);
+        }
+        globalCount++;
       });
-      console.log();
+      console.log(`  (총 ${globalCount}개)\n`);
     }
   }
 
@@ -558,14 +579,40 @@ export async function listSkills() {
     if (localSkills.length > 0) {
       console.log('📁 로컬 스킬 (.omk/skills/):');
       localSkills.forEach(skill => {
-        console.log(`  • ${skill}`);
+        const skillFile = join(LOCAL_SKILLS, skill, 'SKILL.md');
+        let description = '';
+        if (existsSync(skillFile)) {
+          try {
+            const content = readFileSync(skillFile, 'utf-8');
+            const match = content.match(/description:\s*"([^"]+)"/);
+            if (match) {
+              description = match[1];
+            }
+          } catch (e) {
+            // 무시
+          }
+        }
+        if (description) {
+          console.log(`  • ${skill} - ${description}`);
+        } else {
+          console.log(`  • ${skill}`);
+        }
+        localCount++;
       });
-      console.log();
+      console.log(`  (총 ${localCount}개)\n`);
     }
   }
 
-  console.log('💡 사용법: $스킬이름 "작업"');
-  console.log('💡 우선순위: 로컬 > 전역');
+  if (globalCount === 0 && localCount === 0) {
+    console.log('❌ 설치된 스킬이 없습니다.');
+    console.log('\n💡 스킬 설치:');
+    console.log('   omk setup              # 기본 스킬 설치');
+    console.log('   omk add-skill <url>    # 커스텀 스킬 설치');
+  } else {
+    console.log('💡 사용법: $스킬이름 "작업"');
+    console.log('💡 우선순위: 로컬 > 전역');
+    console.log('\n📖 자세한 가이드: docs/SKILLS_MANAGEMENT.md');
+  }
 }
 
 export async function updateCommand(options: { force?: boolean } = {}) {
