@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync, copyFileSync, readFileSync, writeFileSync, readdirSync, symlinkSync } from 'fs';
+import { existsSync, mkdirSync, copyFileSync, readFileSync, writeFileSync, readdirSync, symlinkSync, unlinkSync } from 'fs';
 import { homedir } from 'os';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -91,6 +91,20 @@ export async function setup(options: { force?: boolean; scope?: 'user' | 'projec
   // 에이전트 설치 (JSON 파일)
   const agentsDir = join(__dirname, '..', '..', 'agents');
   if (existsSync(agentsDir)) {
+    // --force 옵션 시 기존 .md 파일 삭제
+    if (options.force && existsSync(KIRO_AGENTS)) {
+      const oldAgents = readdirSync(KIRO_AGENTS).filter(f => f.endsWith('.md'));
+      oldAgents.forEach(oldFile => {
+        const oldPath = join(KIRO_AGENTS, oldFile);
+        try {
+          unlinkSync(oldPath);
+          console.log(`✓ 삭제: ${oldFile} (구버전)`);
+        } catch (e) {
+          // 무시
+        }
+      });
+    }
+
     const agents = readdirSync(agentsDir).filter(f => f.endsWith('.json'));
     
     for (const agent of agents) {
