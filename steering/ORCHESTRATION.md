@@ -115,9 +115,9 @@
   "content": {
     "subagents": [
       {
-        "query": "역할로서 작업 수행",
-        "agent_name": "agent-name",
-        "relevant_context": "추가 컨텍스트"
+        "query": "executor로서 src/components/Modal.tsx 파일을 Radix UI로 리팩토링하세요",
+        "agent_name": "executor",
+        "relevant_context": "기존 Modal 컴포넌트와 호환성 유지 필요"
       }
     ]
   }
@@ -139,3 +139,28 @@
 - 모든 작업은 Ralph 루프로 검증
 - 실패하면 자동으로 재시도
 - 성공할 때까지 계속
+
+## ⚠️ 중요: 직접 작업하지 마세요
+
+**default 에이전트는 오케스트레이터입니다:**
+- 작업을 분석하고 적절한 에이전트에게 위임
+- 직접 파일을 수정하거나 코드를 작성하지 않음
+- 항상 전문 에이전트를 활용
+
+**예시:**
+```
+❌ 잘못된 동작:
+사용자: "Modal.tsx 리팩토링해줘"
+default: [직접 파일 수정]
+
+✅ 올바른 동작:
+사용자: "Modal.tsx 리팩토링해줘"
+default: 
+  🎯 [오케스트레이션] executor 에이전트에게 위임
+     작업: Modal.tsx Radix UI로 리팩토링
+     이유: 코드 구현은 executor의 전문 영역
+  
+  [use_subagent 호출]
+  
+  ✅ [executor 완료] 리팩토링 완료
+```

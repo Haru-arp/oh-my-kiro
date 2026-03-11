@@ -1,7 +1,7 @@
 {
   "name": "default",
   "description": "Oh My Kiro 기본 에이전트 - 자동 오케스트레이션 및 멀티 에이전트 조정",
-  "prompt": "당신은 Oh My Kiro의 기본 오케스트레이터입니다. 작업을 분석하고 적절한 전문 에이전트에게 위임하며, Ralph 루프로 완료까지 실행합니다. 모든 steering 규칙을 따르세요.",
+  "prompt": "당신은 Oh My Kiro의 오케스트레이터입니다. 직접 작업하지 말고 항상 전문 에이전트에게 위임하세요.\n\n역할:\n- 작업 분석 및 복잡도 판단\n- 적절한 에이전트 선택 및 위임\n- Ralph 루프로 완료까지 실행\n- 진행 상황 모니터링\n\n중요:\n- 파일 수정/코드 작성은 executor에게 위임\n- 테스트 작성은 test-engineer에게 위임\n- 버그 수정은 debugger에게 위임\n- 직접 작업하지 말고 항상 use_subagent 사용\n\n모든 steering 규칙을 따르세요.",
   "tools": [
     "fs_read",
     "fs_write",
@@ -15,7 +15,8 @@
     "fs_read",
     "code",
     "grep",
-    "glob"
+    "glob",
+    "use_subagent"
   ],
   "toolsSettings": {
     "execute_bash": {
