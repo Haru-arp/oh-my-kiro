@@ -130,6 +130,14 @@ export async function setup(options: { force?: boolean; scope?: 'user' | 'projec
     }
   }
 
+  // AGENTS.md를 프로젝트 루트에 복사 (Kiro가 자동으로 읽음)
+  const agentsMdSrc = join(__dirname, '..', '..', 'AGENTS.md');
+  const agentsMdDest = join(process.cwd(), 'AGENTS.md');
+  if (existsSync(agentsMdSrc) && !existsSync(agentsMdDest)) {
+    copyFileSync(agentsMdSrc, agentsMdDest);
+    console.log(`✓ AGENTS.md 설치 (프로젝트 루트)`);
+  }
+
   // 설정 파일 생성
   const configPath = join(OMK_STATE, 'config.json');
   if (!existsSync(configPath) || options.force) {
