@@ -16,7 +16,10 @@
     "glob"
   ],
   "resources": [
-    "file://.kiro/steering/**/*.md"
+    "file://.kiro/steering/PRINCIPLES.md",
+    "file://.kiro/steering/AGENTS.md",
+    "skill://.kiro/skills/plan/SKILL.md",
+    "skill://.kiro/skills/ralplan/SKILL.md"
   ],
   "model": "claude-opus-4.6"
 }

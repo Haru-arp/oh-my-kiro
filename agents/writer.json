@@ -22,9 +22,7 @@
     }
   },
   "resources": [
-    "file://**/*.md",
-    "file://**/docs/**/*",
-    "file://**/README*"
+    "file://.kiro/steering/PRINCIPLES.md"
   ],
   "model": "claude-opus-4.6"
 }

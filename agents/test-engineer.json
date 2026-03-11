@@ -27,9 +27,10 @@
     }
   },
   "resources": [
-    "file://.kiro/steering/**/*.md",
-    "file://**/tests/**/*",
-    "file://**/__tests__/**/*"
+    "file://.kiro/steering/PRINCIPLES.md",
+    "file://.kiro/steering/VERIFICATION.md",
+    "skill://.kiro/skills/tdd/SKILL.md",
+    "skill://.kiro/skills/ralph/SKILL.md"
   ],
   "model": "claude-opus-4.6"
 }

@@ -23,8 +23,10 @@
     }
   },
   "resources": [
-    "file://.kiro/steering/**/*.md",
-    "file://.omk/logs/**/*"
+    "file://.kiro/steering/PRINCIPLES.md",
+    "file://.kiro/steering/RALPH.md",
+    "skill://.kiro/skills/ralph/SKILL.md",
+    "skill://.kiro/skills/analyze/SKILL.md"
   ],
   "model": "claude-opus-4.6"
 }

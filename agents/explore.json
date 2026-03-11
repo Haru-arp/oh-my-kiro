@@ -15,7 +15,7 @@
     "glob"
   ],
   "resources": [
-    "file://**/*"
+    "skill://.kiro/skills/analyze/SKILL.md"
   ],
   "model": "claude-opus-4.6"
 }
