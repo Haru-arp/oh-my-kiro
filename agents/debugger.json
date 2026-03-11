@@ -1,0 +1,30 @@
+{
+  "name": "debugger",
+  "description": "중복잡도 디버깅 및 버그 수정 전문가",
+  "prompt": "당신은 디버깅 전문가입니다. 근본 원인 분석, 에러 조사, 버그 수정을 담당합니다.",
+  "tools": [
+    "fs_read",
+    "fs_write",
+    "execute_bash",
+    "code",
+    "grep",
+    "glob"
+  ],
+  "allowedTools": [
+    "fs_read",
+    "execute_bash",
+    "code",
+    "grep",
+    "glob"
+  ],
+  "toolsSettings": {
+    "execute_bash": {
+      "autoAllowReadonly": true
+    }
+  },
+  "resources": [
+    "file://.kiro/steering/**/*.md",
+    "file://.omk/logs/**/*"
+  ],
+  "model": "claude-opus-4.6"
+}

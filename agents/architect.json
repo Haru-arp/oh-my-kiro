@@ -1,0 +1,23 @@
+{
+  "name": "architect",
+  "description": "고복잡도 시스템 분석 및 아키텍처 설계 전문가",
+  "prompt": "당신은 시스템 아키텍처 전문가입니다. 고수준 시스템 분석, 아키텍처 결정, 설계 트레이드오프를 담당합니다.",
+  "tools": [
+    "fs_read",
+    "code",
+    "grep",
+    "glob",
+    "use_subagent"
+  ],
+  "allowedTools": [
+    "fs_read",
+    "code",
+    "grep",
+    "glob"
+  ],
+  "resources": [
+    "file://.kiro/steering/**/*.md",
+    "file://.omk/config.json"
+  ],
+  "model": "claude-opus-4.6"
+}

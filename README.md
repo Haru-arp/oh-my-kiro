@@ -27,13 +27,52 @@ $autopilot "기능 구현"
 
 ## 특징
 
-- 🤖 **멀티 에이전트 조정** - Kiro subagent 오케스트레이션
-- 🎯 **Steering 시스템** - Kiro 네이티브 steering 메커니즘 활용
+- 🤖 **멀티 에이전트 조정** - 10개 전문 에이전트 (default, architect, executor 등)
+- 🎯 **Steering 시스템** - 7개 분리된 steering 파일로 구조화
 - 🔧 **도구 및 리소스 관리** - 에이전트별 allowedTools 및 resources 설정
-- 🔄 **워크플로우 스킬** - 11개 스킬 (team, autopilot, ralph 등)
+- 🔄 **워크플로우 스킬** - 15개 스킬 (team, autopilot, ralph 등)
 - 📊 **상태 관리** - 파일 기반 영속화
 - ⚙️ **완전 커스터마이징** - 모든 설정 수정 가능
 - 🇰🇷 **한국어 우선** - 모든 문서 및 응답 한국어
+
+## 에이전트
+
+**10개 전문 에이전트 (JSON 형식):**
+
+- `default` - 오케스트레이터 (자동 위임 및 조정, steering 규칙 유지)
+- `architect` - 시스템 아키텍처 분석 및 설계
+- `planner` - 작업 분해 및 계획 수립
+- `executor` - 코드 구현 및 리팩토링
+- `debugger` - 버그 수정 및 디버깅
+- `verifier` - 테스트 실행 및 검증
+- `test-engineer` - 테스트 설계 및 구현
+- `security-reviewer` - 보안 감사 및 취약점 분석
+- `explore` - 코드베이스 탐색
+- `writer` - 문서 작성
+
+**사용법:**
+```bash
+kiro-cli --agent executor  # 특정 에이전트로 시작
+# 또는 Kiro 안에서
+> /agent swap              # 에이전트 전환
+```
+
+## Steering 파일
+
+**7개 분리된 steering 문서:**
+
+- `PROJECT.md` - 전체 구조 및 인덱스
+- `PRINCIPLES.md` - 기본 원칙 및 작업 규칙
+- `AGENTS.md` - 에이전트 역할 및 모델 설정
+- `ORCHESTRATION.md` - 오케스트레이션 및 위임 규칙
+- `RALPH.md` - Ralph 루프 규칙
+- `SKILLS.md` - 워크플로우 스킬
+- `VERIFICATION.md` - 검증 및 상태 관리
+
+**장점:**
+- `/clear` 후에도 규칙 유지 (default 에이전트가 자동 로드)
+- 역할별로 분리되어 관리 용이
+- 프로젝트별 커스터마이징 가능
 
 ## Kiro 구조
 
@@ -41,9 +80,9 @@ $autopilot "기능 구현"
 ~/.kiro/
 ├── steering/          # Steering 문서 (프로젝트 규칙)
 │   └── PROJECT.md
-├── agents/            # 에이전트 정의 (역할, 도구, 리소스)
-│   ├── executor.md
-│   ├── architect.md
+├── agents/            # 에이전트 정의 (JSON 형식)
+│   ├── executor.json
+│   ├── architect.json
 │   └── ...
 ├── skills/            # 워크플로우 스킬
 │   ├── team/
@@ -53,10 +92,10 @@ $autopilot "기능 구현"
     └── cli.json
 
 .omk/                  # 프로젝트별 상태
-├── config.json        # OMK 설정
 ├── state/             # 모드 상태
 ├── plans/             # 실행 계획
-└── logs/              # 로그
+├── logs/              # 로그
+└── skills/            # 로컬 스킬
 ```
 
 ## 설치

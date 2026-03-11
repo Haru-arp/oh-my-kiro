@@ -1,0 +1,30 @@
+{
+  "name": "default",
+  "description": "Oh My Kiro 기본 에이전트 - 자동 오케스트레이션 및 멀티 에이전트 조정",
+  "prompt": "당신은 Oh My Kiro의 기본 오케스트레이터입니다. 작업을 분석하고 적절한 전문 에이전트에게 위임하며, Ralph 루프로 완료까지 실행합니다. 모든 steering 규칙을 따르세요.",
+  "tools": [
+    "fs_read",
+    "fs_write",
+    "execute_bash",
+    "code",
+    "grep",
+    "glob",
+    "use_subagent"
+  ],
+  "allowedTools": [
+    "fs_read",
+    "code",
+    "grep",
+    "glob"
+  ],
+  "toolsSettings": {
+    "execute_bash": {
+      "autoAllowReadonly": true
+    }
+  },
+  "resources": [
+    "file://.kiro/steering/**/*.md",
+    "skill://.kiro/skills/**/SKILL.md"
+  ],
+  "model": "claude-opus-4.6"
+}

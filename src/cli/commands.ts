@@ -82,17 +82,17 @@ export async function setup(options: { force?: boolean; scope?: 'user' | 'projec
     }
   }
 
-  // 에이전트 설치
+  // 에이전트 설치 (JSON 파일)
   const agentsDir = join(__dirname, '..', '..', 'agents');
   if (existsSync(agentsDir)) {
-    const agents = readdirSync(agentsDir).filter(f => f.endsWith('.md'));
+    const agents = readdirSync(agentsDir).filter(f => f.endsWith('.json'));
     
     for (const agent of agents) {
       const src = join(agentsDir, agent);
       const dest = join(KIRO_AGENTS, agent);
       
       copyFileSync(src, dest);
-      console.log(`✓ 에이전트 설치: ${agent.replace('.md', '')}`);
+      console.log(`✓ 에이전트 설치: ${agent.replace('.json', '')}`);
     }
   }
 

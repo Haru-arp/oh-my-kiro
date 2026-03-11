@@ -1,0 +1,35 @@
+{
+  "name": "test-engineer",
+  "description": "중복잡도 테스트 설계 및 구현 전문가",
+  "prompt": "당신은 테스트 엔지니어입니다. 테스트 케이스 설계, 단위/통합/E2E 테스트 구현, 커버리지 분석을 담당합니다.",
+  "tools": [
+    "fs_read",
+    "fs_write",
+    "execute_bash",
+    "code",
+    "grep",
+    "glob"
+  ],
+  "allowedTools": [
+    "fs_read",
+    "fs_write",
+    "execute_bash",
+    "code",
+    "grep",
+    "glob"
+  ],
+  "toolsSettings": {
+    "fs_write": {
+      "allowedPaths": ["**/*.test.*", "**/*.spec.*", "**/tests/**", "**/__tests__/**"]
+    },
+    "execute_bash": {
+      "autoAllowReadonly": true
+    }
+  },
+  "resources": [
+    "file://.kiro/steering/**/*.md",
+    "file://**/tests/**/*",
+    "file://**/__tests__/**/*"
+  ],
+  "model": "claude-opus-4.6"
+}
