@@ -34,7 +34,9 @@ export async function setup(options: { force?: boolean; scope?: 'user' | 'projec
     join(OMK_STATE, 'state'),
     join(OMK_STATE, 'plans'),
     join(OMK_STATE, 'logs'),
-    join(OMK_STATE, 'skills')  // 로컬 스킬 디렉토리
+    join(OMK_STATE, 'skills'),  // 로컬 스킬 디렉토리
+    join(OMK_STATE, 'memory'),  // 메모리 디렉토리
+    join(OMK_STATE, 'memory', 'sessions')  // 세션 히스토리
   ];
 
   dirs.forEach(dir => {
@@ -207,6 +209,32 @@ export async function setup(options: { force?: boolean; scope?: 'user' | 'projec
   if (!existsSync(notepadPath)) {
     writeFileSync(notepadPath, '# 세션 노트\n\n');
     console.log(`✓ 노트패드 생성`);
+  }
+
+  // session-latest.md 템플릿 생성
+  const sessionLatestPath = join(OMK_STATE, 'memory', 'session-latest.md');
+  if (!existsSync(sessionLatestPath)) {
+    const projectName = process.cwd().split('/').pop() || 'project';
+    const template = `# 세션 메모리
+
+세션: 새 세션
+프로젝트: ${projectName}
+
+## 현재 작업
+- 새 세션 시작
+
+## 주요 결정
+- 없음
+
+## 다음 작업
+- [ ] 작업 시작
+
+## 컨텍스트
+- Oh My Kiro 설치 완료
+- 모든 에이전트 및 스킬 사용 가능
+`;
+    writeFileSync(sessionLatestPath, template);
+    console.log(`✓ 메모리 템플릿 생성`);
   }
 
   console.log('\n✅ 설치 완료!');

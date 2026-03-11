@@ -23,6 +23,7 @@
     }
   },
   "resources": [
+    "file://.omk/memory/session-latest.md",
     "file://.kiro/steering/**/*.md",
     "skill://.kiro/skills/**/SKILL.md"
   ],
