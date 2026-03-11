@@ -1,6 +1,7 @@
 ---
 name: ralplan
 description: "합의 계획. RALPLAN-DR 구조화 심의. 트리거: $ralplan, 랄플랜, 합의 계획"
+model: claude-opus-4.6
 ---
 
 # 랄플랜 합의 계획

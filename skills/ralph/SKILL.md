@@ -1,6 +1,7 @@
 ---
 name: ralph
 description: "지속 실행 루프. 완료까지 계속. 트리거: $ralph, 랄프, 멈추지마, 계속해"
+model: claude-sonnet-4.5
 ---
 
 # 랄프 지속 실행

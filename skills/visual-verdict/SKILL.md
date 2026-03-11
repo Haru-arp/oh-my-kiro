@@ -1,6 +1,7 @@
 ---
 name: visual-verdict
 description: "시각적 검증. 참조 이미지와 비교. 트리거: $visual-verdict, 비주얼 판정, 시각적 검증"
+model: claude-sonnet-4.5
 ---
 
 # 비주얼 판정

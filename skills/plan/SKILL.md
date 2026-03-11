@@ -1,6 +1,7 @@
 ---
 name: plan
 description: "구조화된 계획 수립. 작업 분해 및 의존성. 트리거: $plan, 계획, 플랜"
+model: claude-sonnet-4.5
 ---
 
 # 계획 수립

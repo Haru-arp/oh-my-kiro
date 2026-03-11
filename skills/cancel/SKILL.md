@@ -1,6 +1,7 @@
 ---
 name: cancel
 description: "모드 취소. 활성 실행 중지. 트리거: $cancel, 취소, 중지, 중단"
+model: claude-haiku-4.5
 ---
 
 # 취소
