@@ -1,7 +1,7 @@
 ---
 name: analyze
 description: "심층 분석. 코드베이스/아키텍처 조사. 트리거: $analyze, 분석, 조사"
-model: claude-opus-4.6
+model: claude-opus-4-6
 ---
 
 # 분석

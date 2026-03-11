@@ -1,7 +1,7 @@
 ---
 name: ecomode
 description: "토큰 효율 모드. 비용 절약 실행. 트리거: $ecomode, 에코, 절약"
-model: claude-haiku-4.5
+model: claude-haiku-4-5
 ---
 
 # 에코모드

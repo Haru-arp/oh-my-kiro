@@ -1,7 +1,7 @@
 ---
 name: autopilot
 description: "자율 파이프라인 실행. 처음부터 끝까지 자동. 트리거: $autopilot, 자동, 만들어줘"
-model: claude-opus-4.6
+model: claude-opus-4-6
 ---
 
 # 자동 조종

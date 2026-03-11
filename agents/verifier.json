@@ -23,5 +23,5 @@
     "file://.kiro/steering/VERIFICATION.md",
     "skill://.kiro/skills/visual-verdict/SKILL.md"
   ],
-  "model": "claude-opus-4.6"
+  "model": "claude-opus-4-6"
 }

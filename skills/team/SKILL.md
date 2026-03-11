@@ -1,7 +1,7 @@
 ---
 name: team
 description: "멀티 에이전트 팀 오케스트레이션. 단계별 실행 (plan → prd → exec → verify → fix). 최대 6개 워커. 트리거: $team, 팀 모드, 팀 작업"
-model: claude-opus-4.6
+model: claude-opus-4-6
 ---
 
 # 팀 오케스트레이션

@@ -1,7 +1,7 @@
 ---
 name: ultrawork
 description: "병렬 작업 실행. 독립 작업 동시 처리. 트리거: $ultrawork, 울트라워크, 병렬, 동시에"
-model: claude-opus-4.6
+model: claude-opus-4-6
 ---
 
 # 울트라워크 병렬 실행

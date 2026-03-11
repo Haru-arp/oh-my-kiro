@@ -1,7 +1,7 @@
 ---
 name: tdd
 description: "테스트 주도 개발. 테스트 먼저 작성. 트리거: $tdd, 테스트 주도, 테스트 먼저"
-model: claude-sonnet-4.5
+model: claude-sonnet-4-5
 ---
 
 # TDD

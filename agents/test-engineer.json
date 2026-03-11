@@ -32,5 +32,5 @@
     "skill://.kiro/skills/tdd/SKILL.md",
     "skill://.kiro/skills/ralph/SKILL.md"
   ],
-  "model": "claude-opus-4.6"
+  "model": "claude-opus-4-6"
 }
