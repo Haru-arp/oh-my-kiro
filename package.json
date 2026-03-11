@@ -1,0 +1,42 @@
+{
+  "name": "oh-my-kiro",
+  "version": "0.1.0",
+  "description": "Multi-agent orchestration layer for Kiro CLI",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "omk": "bin/omk.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "setup": "node bin/omk.js setup",
+    "doctor": "node bin/omk.js doctor"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "bin/",
+    "dist/",
+    "skills/",
+    "prompts/",
+    "templates/"
+  ],
+  "keywords": [
+    "kiro",
+    "cli",
+    "agents",
+    "orchestration",
+    "multi-agent"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^12.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0"
+  }
+}
