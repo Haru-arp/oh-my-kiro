@@ -90,14 +90,13 @@ When user requests skill (e.g., `$team`, `$autopilot`):
 **Default choice: executor** (handles most tasks)
 
 Specific cases:
-- Detailed spec needed → specifier
+- Detailed spec → specifier
 - Bug/error → debugger
 - Tests → tester
 - Review → reviewer
 - Architecture → architect
 - Planning → planner
-- Auto documentation → documenter
-- General docs → writer
+- Documentation (any) → documenter
 
 **When in doubt, use executor.**
 

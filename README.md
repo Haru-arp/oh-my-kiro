@@ -75,15 +75,25 @@ omk setup --local
 
 - **omk** - 작업 분석 및 서브에이전트 위임
 
-### 서브에이전트 (7개)
+### 서브에이전트 (8개)
 
+**계획 & 스펙:**
+- **planner** - 작업 분해 (sonnet-4.5)
+- **specifier** - 상세 스펙 작성 (opus-4.6)
+
+**설계:**
+- **architect** - 시스템 설계, 아키텍처 (opus-4.6)
+
+**구현:**
 - **executor** - 코드 구현, 리팩토링 (opus-4.6)
 - **debugger** - 버그 수정, 에러 해결 (opus-4.6)
+
+**검증:**
 - **tester** - 테스트 작성, 실행 (sonnet-4.5)
 - **reviewer** - 코드 리뷰, 품질 검사 (sonnet-4.5)
-- **architect** - 시스템 설계, 아키텍처 (opus-4.6)
-- **planner** - 작업 계획, 분해 (sonnet-4.5)
-- **writer** - 문서 작성, README (haiku-4.5)
+
+**문서:**
+- **documenter** - 모든 문서 작성 (haiku-4.5)
 
 ## 스킬
 

@@ -20,7 +20,7 @@ model: claude-opus-4.6
 4. **executor**: 코드 구현
 5. **tester**: 테스트 작성 및 실행
 6. **reviewer**: 품질 검사
-7. **documenter**: 자동 문서화 (NEW)
+7. **documenter**: 모든 문서화 (NEW)
 8. **Ralph 루프**: 모든 것 검증
 
 ## 예시
