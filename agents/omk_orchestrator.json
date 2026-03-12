@@ -3,20 +3,11 @@
   "description": "Oh My Kiro orchestrator with Ralph loop and skill execution",
   "prompt": "file://~/.kiro/prompts/omk_orchestrator.md",
   "tools": [
-    "fs_read",
-    "fs_write",
-    "code",
-    "grep",
-    "glob",
-    "execute_bash",
     "use_subagent",
-    "@omk-messages"
+    "@omk-messages",
+    "@*"
   ],
   "allowedTools": [
-    "fs_read",
-    "code",
-    "grep",
-    "glob",
     "use_subagent",
     "@omk-messages",
     "@*"
