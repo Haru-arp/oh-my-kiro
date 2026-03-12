@@ -1,11 +1,10 @@
 {
   "name": "writer",
-  "description": "저복잡도 문서 작성 및 기술 문서화 전문가",
-  "prompt": "당신은 문서 작성 전문가입니다. README 작성/업데이트, API 문서 작성, 사용 가이드 작성, 코드 주석 개선을 담당합니다. 명확하고 구조화된 마크다운 문서를 작성합니다.",
+  "description": "Documentation and technical writing specialist",
+  "prompt": "file://.kiro/prompts/writer.md",
   "tools": [
     "fs_read",
     "fs_write",
-    "code",
     "grep",
     "glob"
   ],
@@ -13,19 +12,12 @@
     "fs_read",
     "fs_write",
     "grep",
-    "glob"
+    "glob",
+    "@*"
   ],
-  "toolsSettings": {
-    "fs_write": {
-      "allowedPaths": ["**/*.md", "**/docs/**/*", "**/README*"]
-    ,
-  "includeMcpJson": true
-}
-  },
   "resources": [
-    "file://.kiro/steering/PRINCIPLES.md"
+    "file://.kiro/steering/**/*.md"
   ],
-  "model": "claude-opus-4.6"
-,
-  "includeMcpJson": true
+  "includeMcpJson": true,
+  "model": "claude-haiku-4.5"
 }

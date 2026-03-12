@@ -5,13 +5,13 @@
   "type": "module",
   "main": "dist/index.js",
   "bin": {
-    "omk": "bin/omk-v2.js"
+    "omk": "bin/omk.js"
   },
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "setup": "node bin/omk-v2.js setup",
-    "doctor": "node bin/omk-v2.js doctor"
+    "setup": "node bin/omk.js setup",
+    "doctor": "node bin/omk.js doctor"
   },
   "engines": {
     "node": ">=20"
@@ -19,9 +19,9 @@
   "files": [
     "bin/",
     "dist/",
-    "agents-v2/",
-    "prompts-v2/",
-    "steering-v2/"
+    "agents/",
+    "prompts/",
+    "steering/"
   ],
   "keywords": [
     "kiro",

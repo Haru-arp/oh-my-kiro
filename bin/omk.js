@@ -1,107 +1,44 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-import { setup, doctor, listAgentsCommand, statusCommand, cancelCommand, addSkill, listSkills, updateCommand, handoff } from '../dist/cli/commands.js';
-import { TeamOrchestrator } from '../dist/team/orchestrator.js';
+import { setup, doctor } from '../dist/cli/commands.js';
 
 const program = new Command();
 
 program
   .name('omk')
-  .description('Oh My Kiro - Multi-agent orchestration for Kiro CLI')
-  .version('0.1.0');
+  .description('Oh My Kiro v2 - Kiro CLI를 위한 멀티 에이전트 오케스트레이션')
+  .version('2.0.0');
 
 program
   .command('setup')
-  .description('Install skills, prompts, and AGENTS.md')
-  .option('--force', 'Overwrite existing files')
-  .option('--scope <scope>', 'Installation scope: user or project', 'project')
+  .description('Oh My Kiro v2 설치 (에이전트, 프롬프트, steering)')
+  .option('--local', '글로벌 대신 프로젝트 .kiro/에 설치')
+  .option('--force', '기존 파일 덮어쓰기')
+  .option('--agents-only', '에이전트만 설치')
+  .option('--prompts-only', '프롬프트만 설치')
+  .option('--steering-only', 'Steering만 설치')
   .action(setup);
 
 program
   .command('doctor')
-  .description('Verify installation and configuration')
+  .description('Oh My Kiro v2 설치 확인')
   .action(doctor);
 
 program
-  .command('agents')
-  .description('List available agent roles')
-  .action(listAgentsCommand);
-
-program
-  .command('add-skill <repo-url>')
-  .description('Install skill from GitHub repository')
-  .option('--skill <name>', 'Install specific skill from repository')
-  .option('--local', 'Install to project (.omk/skills/) instead of global (~/.kiro/skills/)')
-  .option('--force', 'Overwrite existing skill')
-  .action(addSkill);
-
-program
-  .command('list-skills')
-  .description('List installed skills (global and local)')
-  .action(listSkills);
-
-program
-  .command('update')
-  .description('Update Oh My Kiro to latest version')
-  .option('--force', 'Force update even if already latest')
-  .action(updateCommand);
-
-program
-  .command('handoff')
-  .description('Create session summary and handoff to next session')
-  .action(handoff);
-
-program
-  .command('team <spec> <task>')
-  .description('Start team orchestration (e.g., "3:executor fix all bugs")')
-  .option('--phase <phase>', 'Start at specific phase')
-  .option('--model <model>', 'Model to use for workers (e.g., claude-sonnet-4-20250514)')
-  .action(async (spec, task, options) => {
-    const orchestrator = new TeamOrchestrator();
-    await orchestrator.start(spec, task, options);
-  });
-
-program
-  .command('team-status')
-  .description('Show active team status')
-  .action(async () => {
-    const orchestrator = new TeamOrchestrator();
-    await orchestrator.status();
-  });
-
-program
-  .command('team-shutdown')
-  .description('Shutdown active team')
-  .option('--reason <reason>', 'Shutdown reason')
-  .action(async (options) => {
-    const orchestrator = new TeamOrchestrator();
-    await orchestrator.shutdown(options.reason);
-  });
-
-program
-  .command('status')
-  .description('Show all active modes')
-  .action(statusCommand);
-
-program
-  .command('cancel [mode]')
-  .description('Cancel active mode(s)')
-  .action(cancelCommand);
-
-program
   .command('version')
-  .description('Show version information')
+  .description('버전 정보 표시')
   .action(() => {
-    console.log('Oh My Kiro v0.1.0');
-    console.log('Multi-agent orchestration for Kiro CLI');
-  });
-
-program
-  .command('help')
-  .description('Show help message')
-  .action(() => {
-    program.help();
+    console.log('Oh My Kiro v2.0.0');
+    console.log('Kiro CLI를 위한 멀티 에이전트 오케스트레이션');
+    console.log('');
+    console.log('기능:');
+    console.log('  - 8개 전문 에이전트');
+    console.log('  - Ralph 루프 자동 검증');
+    console.log('  - 4개 워크플로우 스킬');
+    console.log('  - Kiro 네이티브 패턴');
+    console.log('  - MCP 완벽 지원');
   });
 
 program.parse();
+

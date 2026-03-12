@@ -1,7 +1,7 @@
 {
-  "name": "debugger",
-  "description": "Bug fixing and error resolution specialist",
-  "prompt": "file://.kiro/prompts/debugger.md",
+  "name": "tester",
+  "description": "Test design and execution specialist",
+  "prompt": "file://.kiro/prompts/tester.md",
   "tools": [
     "fs_read",
     "fs_write",
@@ -16,7 +16,8 @@
     "code",
     "grep",
     "glob",
-    "execute_bash"
+    "execute_bash",
+    "@*"
   ],
   "toolsSettings": {
     "execute_bash": {
@@ -27,5 +28,5 @@
     "file://.kiro/steering/**/*.md"
   ],
   "includeMcpJson": true,
-  "model": "claude-opus-4.6"
+  "model": "claude-sonnet-4.5"
 }

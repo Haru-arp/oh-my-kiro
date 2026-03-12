@@ -1,17 +1,8 @@
 {
   "name": "executor",
-  "description": "중복잡도 코드 구현 및 리팩토링 전문가",
-  "prompt": "당신은 코드 구현 전문가입니다. 코드 작성, 리팩토링, 기능 개발을 담당합니다.",
+  "description": "Code implementation specialist with full tool access",
+  "prompt": "file://.kiro/prompts/executor.md",
   "tools": [
-    "fs_read",
-    "fs_write",
-    "execute_bash",
-    "code",
-    "grep",
-    "glob",
-    "use_subagent"
-  ],
-  "allowedTools": [
     "fs_read",
     "fs_write",
     "code",
@@ -19,24 +10,23 @@
     "glob",
     "execute_bash"
   ],
+  "allowedTools": [
+    "fs_read",
+    "fs_write",
+    "code",
+    "grep",
+    "glob",
+    "execute_bash",
+    "@*"
+  ],
   "toolsSettings": {
-    "fs_write": {
-      "allowedPaths": ["**/*"]
-    },
     "execute_bash": {
       "autoAllowReadonly": true
-    ,
-  "includeMcpJson": true
-}
+    }
   },
   "resources": [
-    "file://.kiro/steering/PRINCIPLES.md",
-    "file://.kiro/steering/RALPH.md",
-    "file://.kiro/steering/VERIFICATION.md",
-    "skill://.kiro/skills/ralph/SKILL.md",
-    "skill://.kiro/skills/tdd/SKILL.md"
+    "file://.kiro/steering/**/*.md"
   ],
+  "includeMcpJson": true,
   "model": "claude-opus-4.6"
-,
-  "includeMcpJson": true
 }

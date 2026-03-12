@@ -1,7 +1,7 @@
 {
-  "name": "architect",
-  "description": "System architecture and design specialist",
-  "prompt": "file://.kiro/prompts/architect.md",
+  "name": "reviewer",
+  "description": "Code review and quality assurance specialist",
+  "prompt": "file://.kiro/prompts/reviewer.md",
   "tools": [
     "fs_read",
     "code",
@@ -12,11 +12,12 @@
     "fs_read",
     "code",
     "grep",
-    "glob"
+    "glob",
+    "@*"
   ],
   "resources": [
     "file://.kiro/steering/**/*.md"
   ],
   "includeMcpJson": true,
-  "model": "claude-opus-4.6"
+  "model": "claude-sonnet-4.5"
 }
