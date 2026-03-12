@@ -72,11 +72,14 @@ export async function setup(options: SetupOptions = {}) {
   }
 
   console.log(`\n✅ Oh My Kiro v2 설치 완료!\n`);
-  console.log('다음 단계:');
-  console.log('  1. kiro-cli chat');
-  console.log('  2. 작업 시작 (자동으로 omk_orchestrator 활성화)');
-  console.log('  3. 스킬 사용: $team, $autopilot, $plan, $tdd');
-  console.log('  4. 워커 간 통신: send_message, read_messages\n');
+  console.log('사용 방법:');
+  console.log('  1. kiro-cli chat  (기본: kiro_default)');
+  console.log('  2. @omk_orchestrator <작업>  (OMK 호출)');
+  console.log('  3. 스킬: $team, $autopilot, $plan, $tdd');
+  console.log('  4. 워커 통신: send_message, read_messages\n');
+  console.log('예시:');
+  console.log('  > @omk_orchestrator 3개 모듈 병렬 리팩토링');
+  console.log('  > @omk_orchestrator $team 3:executor 작업\n');
 }
 
 interface UninstallOptions {
@@ -355,10 +358,11 @@ async function createCliSettings(basePath: string, force?: boolean) {
     cliSettings = JSON.parse(readFileSync(cliJsonPath, 'utf-8'));
   }
 
-  cliSettings['chat.defaultAgent'] = 'omk_orchestrator';
-
+  // Don't set defaultAgent - keep kiro_default
+  // Users can call @omk_orchestrator when needed
+  
   writeFileSync(cliJsonPath, JSON.stringify(cliSettings, null, 2));
-  console.log(`✓ cli.json (default 에이전트 설정)`);
+  console.log(`✓ cli.json (기본 에이전트 유지, @omk_orchestrator로 호출 가능)`);
 }
 
 async function createMcpSettings(basePath: string, force?: boolean) {
