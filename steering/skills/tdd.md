@@ -1,3 +1,7 @@
+---
+model: claude-sonnet-4.5
+---
+
 # TDD 스킬
 
 테스트 주도 개발 워크플로우.

@@ -218,32 +218,40 @@ async function installAgentsMd(projectRoot: string, force?: boolean) {
 
 This project uses Oh My Kiro v2 orchestration system.
 
-## Orchestrator (default)
+## Orchestrator (omk_orchestrator)
 
-The default agent orchestrates work using:
+The omk_orchestrator agent orchestrates work using:
 - **Subagent delegation** via use_subagent
 - **Ralph loop** for verification and iteration
 - **Skills** for complex workflows (\`$team\`, \`$autopilot\`, \`$plan\`, \`$tdd\`)
 - **Steering files** for guidance
+- **Worker communication** via MCP message server
 
 ## Available Subagents
 
-- **executor**: Code implementation, refactoring
-- **debugger**: Bug fixing, error resolution
-- **tester**: Test design and execution
-- **reviewer**: Code review, quality checks
-- **architect**: System design, architecture
-- **planner**: Task planning, breakdown
-- **writer**: Documentation, README
+- **executor**: Code implementation, refactoring (opus-4.6)
+- **debugger**: Bug fixing, error resolution (opus-4.6)
+- **tester**: Test design and execution (sonnet-4.5)
+- **reviewer**: Code review, quality checks (sonnet-4.5)
+- **architect**: System design, architecture (opus-4.6)
+- **planner**: Task planning, breakdown (sonnet-4.5)
+- **writer**: Documentation, README (haiku-4.5)
 
 ## Skills
 
 \`\`\`bash
-$team 3:executor <task>      # Parallel execution
-$autopilot <feature>          # End-to-end implementation
-$plan <task>                  # Detailed planning
-$tdd <feature>                # Test-driven development
+$team 3:executor <task>      # Parallel execution (opus-4.6)
+$autopilot <feature>          # End-to-end implementation (opus-4.6)
+$plan <task>                  # Detailed planning (sonnet-4.5)
+$tdd <feature>                # Test-driven development (sonnet-4.5)
 \`\`\`
+
+## Worker Communication
+
+Workers can communicate via MCP message server:
+- \`send_message(to="worker", message="...")\`
+- \`read_messages(worker="self")\`
+- Messages stored in \`.kiro/messages/\`
 
 ## Ralph Loop
 
@@ -272,7 +280,7 @@ async function createCliSettings(basePath: string, force?: boolean) {
     cliSettings = JSON.parse(readFileSync(cliJsonPath, 'utf-8'));
   }
 
-  cliSettings['chat.defaultAgent'] = 'default';
+  cliSettings['chat.defaultAgent'] = 'omk_orchestrator';
 
   writeFileSync(cliJsonPath, JSON.stringify(cliSettings, null, 2));
   console.log(`✓ cli.json (default 에이전트 설정)`);
