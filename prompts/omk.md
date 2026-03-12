@@ -146,6 +146,65 @@ User: "$team 3:executor Refactor components"
 5. **Ralph loop** on integrated result
 6. **Done**: Return results
 
+## $team Skill Decision Logic
+
+### Pattern 1: `$team N [작업]` - Same Role
+
+**When to use:**
+- Number specified (e.g., `$team 3`)
+- Same type of work repeated
+- Examples: "10개 컴포넌트", "모든 파일", "여러 페이지"
+
+**Action:**
+- Use N workers of same role (default: executor)
+- Split work evenly
+- Execute in parallel
+
+**Example:**
+```
+$team 3 8개 컴포넌트 리팩토링
+→ executor #1: 컴포넌트 1, 2, 3
+→ executor #2: 컴포넌트 4, 5, 6
+→ executor #3: 컴포넌트 7, 8
+```
+
+### Pattern 2: `$team [작업]` - Mixed Roles
+
+**When to use:**
+- No number specified
+- Complex feature requiring multiple roles
+- Examples: "시스템 구현", "기능 추가", "완전 구현"
+
+**Action:**
+- Analyze what roles are needed
+- Assign different roles (max 4)
+- Execute in parallel
+
+**Example:**
+```
+$team 결제 시스템 구현
+→ executor: 백엔드 API
+→ executor: 프론트엔드 UI
+→ tester: 테스트 작성
+→ writer: 문서 작성
+```
+
+### Decision Tree
+
+```
+$team 입력 확인
+  ↓
+숫자 있음? (예: $team 3)
+  ↓ YES → Pattern 1 (Same Role)
+  |       - N개 같은 역할
+  |       - 작업 균등 분배
+  ↓ NO
+Pattern 2 (Mixed Roles)
+  - 필요한 역할 분석
+  - 구현 + 테스트 + 리뷰 + 문서
+  - 최대 4개 역할
+```
+
 ## Important
 
 - Always delegate, never work directly
