@@ -1326,8 +1326,52 @@ kiro-cli chat
 
 ## 다음 단계
 
-1. v2 에이전트 JSON 작성
-2. 프롬프트 파일 작성
-3. Steering 파일 작성
+### 1. 설치 구조
+
+**글로벌 설치 (기본)**
+```
+~/.kiro/
+├── agents/
+│   ├── default.json
+│   ├── executor.json
+│   └── ...
+├── prompts/
+│   ├── orchestrator.md
+│   └── ...
+└── steering/
+    ├── orchestration.md
+    ├── ralph-loop.md
+    ├── skills/
+    ├── guides/
+    └── standards/
+```
+
+**프로젝트 설치 (선택)**
+```
+project/
+├── .kiro/
+│   ├── agents/
+│   ├── prompts/
+│   ├── steering/
+│   └── settings/
+│       └── cli.json
+└── AGENTS.md
+```
+
+**우선순위:** 프로젝트 > 글로벌
+
+### 2. Setup 명령어
+
+```bash
+omk setup              # 글로벌 설치
+omk setup --local      # 프로젝트 설치
+omk setup --force      # 덮어쓰기
+```
+
+### 3. 구현 순서
+
+1. v2 에이전트 JSON 작성 (8개)
+2. 프롬프트 파일 작성 (8개)
+3. Steering 파일 작성 (10개)
 4. Setup 명령어 수정
 5. 테스트 및 검증
