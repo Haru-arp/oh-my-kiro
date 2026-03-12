@@ -30,7 +30,6 @@ export async function setup(options: SetupOptions = {}) {
     join(basePath, 'steering'),
     join(basePath, 'steering', 'skills'),
     join(basePath, 'steering', 'guides'),
-    join(basePath, 'steering', 'standards'),
     join(basePath, 'mcp')
   ];
 
@@ -263,23 +262,6 @@ async function installSteering(basePath: string, force?: boolean) {
       }
       copyFileSync(src, dest);
       console.log(`✓ Guide: ${guide}`);
-    }
-  }
-
-  // Standards
-  const standardsDir = join(sourceDir, 'standards');
-  if (existsSync(standardsDir)) {
-    const standards = readdirSync(standardsDir).filter(f => f.endsWith('.md'));
-    for (const standard of standards) {
-      const src = join(standardsDir, standard);
-      const dest = join(targetDir, 'standards', standard);
-      
-      if (!force && existsSync(dest)) {
-        console.log(`⊘ standards/${standard} (이미 존재)`);
-        continue;
-      }
-      copyFileSync(src, dest);
-      console.log(`✓ Standard: ${standard}`);
     }
   }
 }
