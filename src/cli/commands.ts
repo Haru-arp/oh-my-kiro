@@ -342,9 +342,33 @@ async function installMcp(basePath: string, force?: boolean) {
     console.log(`✓ MCP: ${file}`);
   }
 
-  console.log('\n📦 MCP 서버 빌드 필요:');
-  console.log(`   cd ${mcpTargetDir}`);
-  console.log(`   npm install && npm run build\n`);
+  // Auto build MCP server
+  console.log('\n📦 MCP 서버 빌드 중...');
+  
+  try {
+    const { execSync } = await import('child_process');
+    
+    // npm install
+    console.log('   npm install...');
+    execSync('npm install', { 
+      cwd: mcpTargetDir, 
+      stdio: 'pipe' 
+    });
+    
+    // npm run build
+    console.log('   npm run build...');
+    execSync('npm run build', { 
+      cwd: mcpTargetDir, 
+      stdio: 'pipe' 
+    });
+    
+    console.log('✅ MCP 서버 빌드 완료\n');
+  } catch (error) {
+    console.error('❌ MCP 서버 빌드 실패');
+    console.error('   수동 빌드 필요:');
+    console.error(`   cd ${mcpTargetDir}`);
+    console.error(`   npm install && npm run build\n`);
+  }
 }
 
 export async function doctor() {
