@@ -5,12 +5,20 @@
   "tools": [
     "@*",
     "@omk-messages",
-    "use_subagent"
+    "use_subagent",
+    "fs_read",
+    "code",
+    "grep",
+    "glob"
   ],
   "allowedTools": [
     "use_subagent",
     "@omk-messages",
-    "@*"
+    "@*",
+    "fs_read",
+    "code",
+    "grep",
+    "glob"
   ],
   "toolsSettings": {
     "subagent": {
