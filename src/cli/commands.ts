@@ -290,27 +290,36 @@ async function createMcpSettings(basePath: string, force?: boolean) {
   const settingsDir = join(basePath, 'settings');
   const mcpJsonPath = join(settingsDir, 'mcp.json');
   
-  if (!force && existsSync(mcpJsonPath)) {
-    console.log(`⊘ mcp.json (이미 존재)`);
-    return;
-  }
-
   const mcpServerPath = join(basePath, 'mcp', 'dist', 'message-server.js');
   
-  const settings = {
-    mcpServers: {
-      'omk-messages': {
-        command: 'node',
-        args: [mcpServerPath],
-        env: {
-          OMK_WORK_DIR: process.cwd()
-        }
+  // Load existing settings or create new
+  let settings: any = { mcpServers: {} };
+  
+  if (existsSync(mcpJsonPath)) {
+    try {
+      settings = JSON.parse(readFileSync(mcpJsonPath, 'utf-8'));
+      if (!settings.mcpServers) {
+        settings.mcpServers = {};
       }
+    } catch (error) {
+      console.warn('⚠️  기존 mcp.json 파싱 실패, 새로 생성합니다.');
+      settings = { mcpServers: {} };
+    }
+  }
+  
+  // Add or update omk-messages server
+  settings.mcpServers['omk-messages'] = {
+    command: 'node',
+    args: [mcpServerPath],
+    env: {
+      OMK_WORK_DIR: process.cwd()
     }
   };
 
   writeFileSync(mcpJsonPath, JSON.stringify(settings, null, 2));
-  console.log(`✓ mcp.json (메시지 서버 활성화)`);
+  
+  const serverCount = Object.keys(settings.mcpServers).length;
+  console.log(`✓ mcp.json (omk-messages 추가, 총 ${serverCount}개 서버)`);
 }
 
 async function installMcp(basePath: string, force?: boolean) {
