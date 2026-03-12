@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-import { setup, doctor } from '../dist/cli/commands.js';
+import { setup, doctor, uninstall } from '../dist/cli/commands.js';
 
 const program = new Command();
 
@@ -21,6 +21,13 @@ program
   .action(setup);
 
 program
+  .command('uninstall')
+  .description('Oh My Kiro v2 제거')
+  .option('--local', '로컬 설치 제거 (기본: 글로벌)')
+  .option('--keep-mcp', 'MCP 서버 유지')
+  .action(uninstall);
+
+program
   .command('doctor')
   .description('Oh My Kiro v2 설치 확인')
   .action(doctor);
@@ -29,15 +36,15 @@ program
   .command('version')
   .description('버전 정보 표시')
   .action(() => {
-    console.log('Oh My Kiro v2.0.0');
+    console.log('Oh My Kiro v2.1.0');
     console.log('Kiro CLI를 위한 멀티 에이전트 오케스트레이션');
     console.log('');
     console.log('기능:');
-    console.log('  - 8개 전문 에이전트');
+    console.log('  - 8개 전문 에이전트 (omk_orchestrator + 7개 서브에이전트)');
     console.log('  - Ralph 루프 자동 검증');
-    console.log('  - 4개 워크플로우 스킬');
+    console.log('  - 4개 워크플로우 스킬 ($team, $autopilot, $plan, $tdd)');
+    console.log('  - 워커 간 통신 (MCP 메시지 서버)');
     console.log('  - Kiro 네이티브 패턴');
-    console.log('  - MCP 완벽 지원');
   });
 
 program.parse();

@@ -74,9 +74,84 @@ export async function setup(options: SetupOptions = {}) {
   console.log(`\n✅ Oh My Kiro v2 설치 완료!\n`);
   console.log('다음 단계:');
   console.log('  1. kiro-cli chat');
-  console.log('  2. 작업 시작 (자동으로 default 에이전트 활성화)');
-  console.log('  3. 워커 간 통신: send_message, read_messages 도구 사용\n');
-  console.log('  3. 스킬 사용: $team, $autopilot, $plan, $tdd\n');
+  console.log('  2. 작업 시작 (자동으로 omk_orchestrator 활성화)');
+  console.log('  3. 스킬 사용: $team, $autopilot, $plan, $tdd');
+  console.log('  4. 워커 간 통신: send_message, read_messages\n');
+}
+
+interface UninstallOptions {
+  local?: boolean;
+  keepMcp?: boolean;
+}
+
+export async function uninstall(options: UninstallOptions = {}) {
+  const scope = options.local ? 'local' : 'global';
+  const basePath = scope === 'global' 
+    ? join(HOME, '.kiro')
+    : join(process.cwd(), '.kiro');
+
+  console.log(`🗑️  Oh My Kiro v2 제거 중 (${scope})...\n`);
+
+  const itemsToRemove = [
+    { path: join(basePath, 'agents'), name: 'agents/' },
+    { path: join(basePath, 'prompts'), name: 'prompts/' },
+    { path: join(basePath, 'steering'), name: 'steering/' },
+  ];
+
+  if (!options.keepMcp) {
+    itemsToRemove.push({ path: join(basePath, 'mcp'), name: 'mcp/' });
+  }
+
+  if (scope === 'local') {
+    itemsToRemove.push({ path: join(process.cwd(), 'AGENTS.md'), name: 'AGENTS.md' });
+  }
+
+  // Remove items
+  const { rmSync } = await import('fs');
+  for (const item of itemsToRemove) {
+    if (existsSync(item.path)) {
+      rmSync(item.path, { recursive: true, force: true });
+      console.log(`✓ 제거: ${item.name}`);
+    } else {
+      console.log(`⊘ 없음: ${item.name}`);
+    }
+  }
+
+  // Clean up MCP settings
+  if (!options.keepMcp) {
+    const mcpJsonPath = join(basePath, 'settings', 'mcp.json');
+    if (existsSync(mcpJsonPath)) {
+      try {
+        const settings = JSON.parse(readFileSync(mcpJsonPath, 'utf-8'));
+        if (settings.mcpServers && settings.mcpServers['omk-messages']) {
+          delete settings.mcpServers['omk-messages'];
+          writeFileSync(mcpJsonPath, JSON.stringify(settings, null, 2));
+          console.log(`✓ mcp.json에서 omk-messages 제거`);
+        }
+      } catch (error) {
+        console.warn('⚠️  mcp.json 처리 실패');
+      }
+    }
+  }
+
+  // Clean up CLI settings
+  if (scope === 'local') {
+    const cliJsonPath = join(basePath, 'settings', 'cli.json');
+    if (existsSync(cliJsonPath)) {
+      try {
+        const settings = JSON.parse(readFileSync(cliJsonPath, 'utf-8'));
+        if (settings['chat.defaultAgent'] === 'omk_orchestrator') {
+          delete settings['chat.defaultAgent'];
+          writeFileSync(cliJsonPath, JSON.stringify(settings, null, 2));
+          console.log(`✓ cli.json에서 defaultAgent 제거`);
+        }
+      } catch (error) {
+        console.warn('⚠️  cli.json 처리 실패');
+      }
+    }
+  }
+
+  console.log(`\n✅ Oh My Kiro v2 제거 완료!\n`);
 }
 
 async function installAgents(basePath: string, force?: boolean) {
