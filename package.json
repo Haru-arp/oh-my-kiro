@@ -1,17 +1,17 @@
 {
   "name": "oh-my-kiro",
-  "version": "0.1.0",
-  "description": "Multi-agent orchestration layer for Kiro CLI",
+  "version": "2.0.0",
+  "description": "Multi-agent orchestration for Kiro CLI with native patterns",
   "type": "module",
   "main": "dist/index.js",
   "bin": {
-    "omk": "bin/omk.js"
+    "omk": "bin/omk-v2.js"
   },
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "setup": "node bin/omk.js setup",
-    "doctor": "node bin/omk.js doctor"
+    "setup": "node bin/omk-v2.js setup",
+    "doctor": "node bin/omk-v2.js doctor"
   },
   "engines": {
     "node": ">=20"
@@ -19,16 +19,18 @@
   "files": [
     "bin/",
     "dist/",
-    "skills/",
-    "prompts/",
-    "templates/"
+    "agents-v2/",
+    "prompts-v2/",
+    "steering-v2/"
   ],
   "keywords": [
     "kiro",
     "cli",
     "agents",
     "orchestration",
-    "multi-agent"
+    "multi-agent",
+    "subagents",
+    "ralph-loop"
   ],
   "author": "",
   "license": "MIT",
