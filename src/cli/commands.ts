@@ -340,11 +340,14 @@ async function createCliSettings(basePath: string, force?: boolean) {
     cliSettings = JSON.parse(readFileSync(cliJsonPath, 'utf-8'));
   }
 
-  // Don't set defaultAgent - keep kiro_default
+  // Remove defaultAgent if exists - keep kiro_default
   // Users can call @omk_orchestrator when needed
+  if (cliSettings['chat.defaultAgent'] === 'omk_orchestrator') {
+    delete cliSettings['chat.defaultAgent'];
+  }
   
   writeFileSync(cliJsonPath, JSON.stringify(cliSettings, null, 2));
-  console.log(`✓ cli.json (기본 에이전트 유지, @omk_orchestrator로 호출 가능)`);
+  console.log(`✓ cli.json (기본 에이전트: kiro_default, @omk_orchestrator로 호출 가능)`);
 }
 
 async function createMcpSettings(basePath: string, force?: boolean) {
