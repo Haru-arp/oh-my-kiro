@@ -8,7 +8,8 @@
     "code",
     "grep",
     "glob",
-    "execute_bash"
+    "execute_bash",
+    "@omk-messages"
   ],
   "allowedTools": [
     "fs_read",
@@ -17,7 +18,8 @@
     "grep",
     "glob",
     "execute_bash",
-    "@*"
+    "@*",
+    "@omk-messages"
   ],
   "toolsSettings": {
     "execute_bash": {

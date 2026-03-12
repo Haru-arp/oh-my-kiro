@@ -6,14 +6,16 @@
     "fs_read",
     "code",
     "grep",
-    "glob"
+    "glob",
+    "@omk-messages"
   ],
   "allowedTools": [
     "fs_read",
     "code",
     "grep",
     "glob",
-    "@*"
+    "@*",
+    "@omk-messages"
   ],
   "resources": [
     "file://.kiro/steering/**/*.md"

@@ -30,7 +30,8 @@ export async function setup(options: SetupOptions = {}) {
     join(basePath, 'steering'),
     join(basePath, 'steering', 'skills'),
     join(basePath, 'steering', 'guides'),
-    join(basePath, 'steering', 'standards')
+    join(basePath, 'steering', 'standards'),
+    join(basePath, 'mcp')
   ];
 
   if (scope === 'local') {
@@ -58,16 +59,23 @@ export async function setup(options: SetupOptions = {}) {
     await installSteering(basePath, options.force);
   }
 
+  // MCP 서버 설치
+  if (!options.agentsOnly && !options.promptsOnly && !options.steeringOnly) {
+    await installMcp(basePath, options.force);
+  }
+
   // 로컬 설치 추가 작업
   if (scope === 'local') {
     await installAgentsMd(process.cwd(), options.force);
     await createCliSettings(basePath, options.force);
+    await createMcpSettings(basePath, options.force);
   }
 
   console.log(`\n✅ Oh My Kiro v2 설치 완료!\n`);
   console.log('다음 단계:');
   console.log('  1. kiro-cli chat');
   console.log('  2. 작업 시작 (자동으로 default 에이전트 활성화)');
+  console.log('  3. 워커 간 통신: send_message, read_messages 도구 사용\n');
   console.log('  3. 스킬 사용: $team, $autopilot, $plan, $tdd\n');
 }
 
@@ -268,6 +276,67 @@ async function createCliSettings(basePath: string, force?: boolean) {
 
   writeFileSync(cliJsonPath, JSON.stringify(cliSettings, null, 2));
   console.log(`✓ cli.json (default 에이전트 설정)`);
+}
+
+async function createMcpSettings(basePath: string, force?: boolean) {
+  const settingsDir = join(basePath, 'settings');
+  const mcpJsonPath = join(settingsDir, 'mcp.json');
+  
+  if (!force && existsSync(mcpJsonPath)) {
+    console.log(`⊘ mcp.json (이미 존재)`);
+    return;
+  }
+
+  const mcpServerPath = join(basePath, 'mcp', 'dist', 'message-server.js');
+  
+  const settings = {
+    mcpServers: {
+      'omk-messages': {
+        command: 'node',
+        args: [mcpServerPath],
+        env: {
+          OMK_WORK_DIR: process.cwd()
+        }
+      }
+    }
+  };
+
+  writeFileSync(mcpJsonPath, JSON.stringify(settings, null, 2));
+  console.log(`✓ mcp.json (메시지 서버 활성화)`);
+}
+
+async function installMcp(basePath: string, force?: boolean) {
+  const mcpSourceDir = join(__dirname, '..', '..', 'mcp');
+  const mcpTargetDir = join(basePath, 'mcp');
+
+  if (!existsSync(mcpSourceDir)) {
+    console.error('❌ mcp 디렉토리를 찾을 수 없습니다.');
+    return;
+  }
+
+  // Copy TypeScript source
+  const files = ['message-server.ts', 'package.json', 'tsconfig.json'];
+  
+  for (const file of files) {
+    const src = join(mcpSourceDir, file);
+    const dest = join(mcpTargetDir, file);
+    
+    if (!existsSync(src)) {
+      continue;
+    }
+    
+    if (!force && existsSync(dest)) {
+      console.log(`⊘ mcp/${file} (이미 존재)`);
+      continue;
+    }
+    
+    copyFileSync(src, dest);
+    console.log(`✓ MCP: ${file}`);
+  }
+
+  console.log('\n📦 MCP 서버 빌드 필요:');
+  console.log(`   cd ${mcpTargetDir}`);
+  console.log(`   npm install && npm run build\n`);
 }
 
 export async function doctor() {

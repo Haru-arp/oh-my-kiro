@@ -1,0 +1,21 @@
+{
+  "name": "@oh-my-kiro/mcp-messages",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "MCP server for worker communication in Oh My Kiro",
+  "main": "message-server.js",
+  "bin": {
+    "omk-messages": "./message-server.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch"
+  }
+}
