@@ -27,7 +27,7 @@
     }
   },
   "resources": [
-    "file://.kiro/steering/**/*.md"
+    "file://~/.kiro/steering/**/*.md"
   ],
   "includeMcpJson": true,
   "model": "claude-sonnet-4.5"
