@@ -1,63 +1,63 @@
-# Plan Skill
+# 계획 스킬
 
-Detailed task planning and breakdown.
+상세한 작업 계획 및 분해.
 
-## Usage
+## 사용법
 
-`$plan <task description>`
+`$plan <작업 설명>`
 
-**Example:** `$plan Implement shopping cart feature`
+**예시:** `$plan 장바구니 기능 구현`
 
-## Workflow
+## 워크플로우
 
-1. **Analyze** requirements
-2. **Break down** into subtasks
-3. **Identify** dependencies
-4. **Estimate** complexity
-5. **Create** execution plan
+1. **분석** 요구사항
+2. **분해** 하위 작업으로
+3. **식별** 의존성
+4. **추정** 복잡도
+5. **생성** 실행 계획
 
-## Output
+## 출력
 
 ```markdown
-# Plan: Shopping Cart
+# 계획: 장바구니
 
-## Tasks
+## 작업
 
-### 1. Cart State Management
-- Subagent: executor
-- Complexity: Medium
-- Dependencies: None
-- Estimate: 2-3 hours
+### 1. 장바구니 상태 관리
+- 서브에이전트: executor
+- 복잡도: 중간
+- 의존성: 없음
+- 예상: 2-3시간
 
-### 2. Cart UI Components
-- Subagent: executor
-- Complexity: Medium
-- Dependencies: Task 1
-- Estimate: 2-3 hours
+### 2. 장바구니 UI 컴포넌트
+- 서브에이전트: executor
+- 복잡도: 중간
+- 의존성: 작업 1
+- 예상: 2-3시간
 
-### 3. Cart API Endpoints
-- Subagent: executor
-- Complexity: High
-- Dependencies: None
-- Estimate: 3-4 hours
+### 3. 장바구니 API 엔드포인트
+- 서브에이전트: executor
+- 복잡도: 높음
+- 의존성: 없음
+- 예상: 3-4시간
 
-### 4. Tests
-- Subagent: tester
-- Complexity: Medium
-- Dependencies: Tasks 1, 2, 3
-- Estimate: 2 hours
+### 4. 테스트
+- 서브에이전트: tester
+- 복잡도: 중간
+- 의존성: 작업 1, 2, 3
+- 예상: 2시간
 
-## Execution Order
+## 실행 순서
 
-1. Tasks 1, 3 (parallel)
-2. Task 2 (after 1)
-3. Task 4 (after all)
+1. 작업 1, 3 (병렬)
+2. 작업 2 (작업 1 이후)
+3. 작업 4 (모든 작업 이후)
 
-## Total Estimate: 9-12 hours
+## 총 예상: 9-12시간
 ```
 
-## Tips
+## 팁
 
-- **Use before complex work** for clarity
-- **Share with team** for alignment
-- **Update as needed** during execution
+- **복잡한 작업 전에 사용**하여 명확성 확보
+- **팀과 공유**하여 정렬
+- **실행 중 필요시 업데이트**

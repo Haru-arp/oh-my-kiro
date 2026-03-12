@@ -1,20 +1,20 @@
-# Testing Guide
+# 테스트 가이드
 
-Practical testing approach.
+실용적인 테스트 접근법.
 
-## Test Types
+## 테스트 유형
 
-**Unit Tests** - Individual functions
+**단위 테스트** - 개별 함수
 ```typescript
-test('validates email', () => {
+test('이메일 검증', () => {
   expect(validateEmail('test@example.com')).toBe(true);
   expect(validateEmail('invalid')).toBe(false);
 });
 ```
 
-**Integration Tests** - Component interaction
+**통합 테스트** - 컴포넌트 상호작용
 ```typescript
-test('form submission', async () => {
+test('폼 제출', async () => {
   render(<LoginForm />);
   fireEvent.change(emailInput, { target: { value: 'test@example.com' }});
   fireEvent.click(submitButton);
@@ -22,9 +22,9 @@ test('form submission', async () => {
 });
 ```
 
-**E2E Tests** - Full user flows
+**E2E 테스트** - 전체 사용자 플로우
 ```typescript
-test('user can login', async () => {
+test('사용자 로그인', async () => {
   await page.goto('/login');
   await page.fill('[name="email"]', 'test@example.com');
   await page.fill('[name="password"]', 'password');
@@ -33,32 +33,32 @@ test('user can login', async () => {
 });
 ```
 
-## AAA Pattern
+## AAA 패턴
 
 ```typescript
-test('example', () => {
-  // Arrange
+test('예시', () => {
+  // 준비 (Arrange)
   const input = 'test';
   
-  // Act
+  // 실행 (Act)
   const result = myFunction(input);
   
-  // Assert
+  // 검증 (Assert)
   expect(result).toBe('expected');
 });
 ```
 
-## Quick Checks
+## 빠른 체크
 
-✓ Tests are independent
-✓ Tests are fast
-✓ Clear test names
-✓ One assertion per test (ideally)
-✓ Tests are reliable
+✓ 테스트는 독립적
+✓ 테스트는 빠름
+✓ 명확한 테스트 이름
+✓ 테스트당 하나의 검증 (이상적)
+✓ 테스트는 신뢰할 수 있음
 
-## Coverage Goals
+## 커버리지 목표
 
-- **80%+** overall coverage
-- **100%** critical paths
-- **All** edge cases
-- **All** error handling
+- **80%+** 전체 커버리지
+- **100%** 중요 경로
+- **모든** 엣지 케이스
+- **모든** 오류 처리

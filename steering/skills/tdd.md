@@ -1,57 +1,57 @@
-# TDD Skill
+# TDD 스킬
 
-Test-driven development workflow.
+테스트 주도 개발 워크플로우.
 
-## Usage
+## 사용법
 
-`$tdd <feature description>`
+`$tdd <기능 설명>`
 
-**Example:** `$tdd Email validation function`
+**예시:** `$tdd 이메일 유효성 검사 함수`
 
-## Workflow (Red-Green-Refactor)
+## 워크플로우 (Red-Green-Refactor)
 
-### 1. Red (Test Fails)
-- [tester] Write failing test
-- Verify test fails ✓
+### 1. Red (테스트 실패)
+- [tester] 실패하는 테스트 작성
+- 테스트 실패 확인 ✓
 
-### 2. Green (Test Passes)
-- [executor] Implement minimal code
-- Run test → passes ✓
+### 2. Green (테스트 통과)
+- [executor] 최소한의 코드 구현
+- 테스트 실행 → 통과 ✓
 
-### 3. Refactor (Improve Code)
-- [executor] Clean up code
-- Run test → still passes ✓
+### 3. Refactor (코드 개선)
+- [executor] 코드 정리
+- 테스트 실행 → 여전히 통과 ✓
 
-### 4. Repeat
-- Add more test cases
-- Red-Green-Refactor cycle
+### 4. 반복
+- 더 많은 테스트 케이스 추가
+- Red-Green-Refactor 사이클
 
-## Example
+## 예시
 
 ```
-User: $tdd Email validation
+사용자: $tdd 이메일 유효성 검사
 
 1. Red:
-   [tester] Test: valid email passes
-   Run → fails ✓
+   [tester] 테스트: 유효한 이메일 통과
+   실행 → 실패 ✓
 
 2. Green:
-   [executor] Basic regex validation
-   Run → passes ✓
+   [executor] 기본 정규식 유효성 검사
+   실행 → 통과 ✓
 
 3. Refactor:
-   [executor] Extract to utility
-   Run → passes ✓
+   [executor] 유틸리티로 추출
+   실행 → 통과 ✓
 
-4. Repeat:
-   [tester] Test: invalid formats fail
-   [executor] Improve validation
-   Run → passes ✓
+4. 반복:
+   [tester] 테스트: 잘못된 형식 실패
+   [executor] 유효성 검사 개선
+   실행 → 통과 ✓
 ```
 
-## Benefits
+## 장점
 
-- **Tests first** = clear requirements
-- **Minimal code** = no over-engineering
-- **Refactor safely** = tests protect you
-- **High coverage** = automatic
+- **테스트 우선** = 명확한 요구사항
+- **최소한의 코드** = 과도한 엔지니어링 방지
+- **안전한 리팩토링** = 테스트가 보호
+- **높은 커버리지** = 자동

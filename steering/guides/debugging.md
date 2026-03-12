@@ -1,66 +1,66 @@
-# Debugging Guide
+# 디버깅 가이드
 
-Systematic bug fixing approach.
+체계적인 버그 수정 접근법.
 
-## Quick Process
+## 빠른 프로세스
 
-1. **Reproduce** - Verify bug exists
-2. **Isolate** - Find exact location
-3. **Fix** - Implement solution
-4. **Verify** - Test thoroughly
-5. **Prevent** - Add tests
+1. **재현** - 버그 존재 확인
+2. **격리** - 정확한 위치 찾기
+3. **수정** - 솔루션 구현
+4. **검증** - 철저히 테스트
+5. **예방** - 테스트 추가
 
-## Debugging Tools
+## 디버깅 도구
 
-**Logs:**
+**로그:**
 ```typescript
-console.log('Debug:', variable);
-console.error('Error:', error);
+console.log('디버그:', variable);
+console.error('오류:', error);
 ```
 
-**Debugger:**
-- Set breakpoints
-- Step through code
-- Inspect variables
+**디버거:**
+- 중단점 설정
+- 코드 단계별 실행
+- 변수 검사
 
-**Tests:**
-- Write test that reproduces bug
-- Fix until test passes
-- Keep test for regression
+**테스트:**
+- 버그를 재현하는 테스트 작성
+- 테스트 통과할 때까지 수정
+- 회귀 방지를 위해 테스트 유지
 
-## Common Issues
+## 일반적인 문제
 
 **Undefined/Null:**
-- Check variable initialization
-- Add null checks
-- Use optional chaining `?.`
+- 변수 초기화 확인
+- null 체크 추가
+- 옵셔널 체이닝 사용 `?.`
 
-**Async Issues:**
-- Check promise handling
-- Verify await usage
-- Check error handling
+**비동기 문제:**
+- Promise 처리 확인
+- await 사용 검증
+- 오류 처리 확인
 
-**State Issues:**
-- Check state updates
-- Verify dependencies
-- Check timing
+**상태 문제:**
+- 상태 업데이트 확인
+- 의존성 검증
+- 타이밍 확인
 
-## Quick Fixes
+## 빠른 수정
 
-**Type Error:**
+**타입 오류:**
 ```typescript
-// Before
+// 이전
 const value = data.field;
 
-// After
+// 이후
 const value = data?.field ?? defaultValue;
 ```
 
-**Async Error:**
+**비동기 오류:**
 ```typescript
-// Before
+// 이전
 const data = fetchData();
 
-// After
+// 이후
 const data = await fetchData();
 ```

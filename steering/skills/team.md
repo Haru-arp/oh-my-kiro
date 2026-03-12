@@ -1,49 +1,49 @@
-# Team Skill
+# 팀 스킬
 
-Parallel execution with multiple workers.
+여러 워커로 병렬 실행.
 
-## Usage
+## 사용법
 
-`$team <count>:<role> <task>`
+`$team <개수>:<역할> <작업>`
 
-**Example:** `$team 3:executor Refactor all components`
+**예시:** `$team 3:executor 모든 컴포넌트 리팩토링`
 
-## Workflow
+## 워크플로우
 
-1. **Parse**: `3:executor` = 3 executor workers
-2. **Plan**: Break task into 3 parallel subtasks
-3. **Execute**: Spawn 3 subagents (parallel)
-4. **Integrate**: Merge results
-5. **Verify**: Ralph loop on integrated result
+1. **파싱**: `3:executor` = 3개의 executor 워커
+2. **계획**: 작업을 3개의 병렬 하위 작업으로 분해
+3. **실행**: 3개의 서브에이전트 생성 (병렬)
+4. **통합**: 결과 병합
+5. **검증**: 통합된 결과에 Ralph 루프 적용
 
-## Example
+## 예시
 
 ```
-User: $team 3:executor Implement dashboard pages
+사용자: $team 3:executor 대시보드 페이지 구현
 
-1. Plan:
-   - Worker 1: Home, Profile pages
-   - Worker 2: Settings, Analytics pages
-   - Worker 3: Reports, Admin pages
+1. 계획:
+   - 워커 1: Home, Profile 페이지
+   - 워커 2: Settings, Analytics 페이지
+   - 워커 3: Reports, Admin 페이지
 
-2. Execute (parallel):
+2. 실행 (병렬):
    [executor #1] Home, Profile
    [executor #2] Settings, Analytics
    [executor #3] Reports, Admin
 
-3. Integrate:
-   - Merge all changes
-   - Resolve conflicts
+3. 통합:
+   - 모든 변경사항 병합
+   - 충돌 해결
 
-4. Verify:
-   - Run all tests
-   - Fix issues
-   - Done ✓
+4. 검증:
+   - 모든 테스트 실행
+   - 문제 수정
+   - 완료 ✓
 ```
 
-## Tips
+## 팁
 
-- **Max 4 workers** (Kiro limit)
-- **Independent tasks** work best
-- **Clear boundaries** reduce conflicts
-- **Test after integration** always
+- **최대 4개 워커** (Kiro 제한)
+- **독립적인 작업**이 가장 효과적
+- **명확한 경계**로 충돌 감소
+- **통합 후 테스트** 필수

@@ -1,66 +1,66 @@
-# Autopilot Skill
+# 자동조종 스킬
 
-End-to-end feature implementation.
+처음부터 끝까지 기능 구현.
 
-## Usage
+## 사용법
 
-`$autopilot <feature description>`
+`$autopilot <기능 설명>`
 
-**Example:** `$autopilot User authentication with email and password`
+**예시:** `$autopilot 이메일과 비밀번호로 사용자 인증`
 
-## Workflow
+## 워크플로우
 
-1. **planner**: Break down feature
-2. **architect**: Design system (if needed)
-3. **executor**: Implement code
-4. **tester**: Create tests
-5. **reviewer**: Quality check
-6. **writer**: Documentation
-7. **Ralph loop**: Verify everything
+1. **planner**: 기능 분해
+2. **architect**: 시스템 설계 (필요시)
+3. **executor**: 코드 구현
+4. **tester**: 테스트 작성
+5. **reviewer**: 품질 검사
+6. **writer**: 문서화
+7. **Ralph 루프**: 모든 것 검증
 
-## Example
+## 예시
 
 ```
-User: $autopilot Password reset flow
+사용자: $autopilot 비밀번호 재설정 플로우
 
-1. [planner] Tasks:
-   - Email service integration
-   - Token generation/validation
-   - Reset form UI
-   - Email template
+1. [planner] 작업:
+   - 이메일 서비스 통합
+   - 토큰 생성/검증
+   - 재설정 폼 UI
+   - 이메일 템플릿
 
-2. [architect] Design:
-   - API endpoints
-   - Database schema
-   - Security considerations
+2. [architect] 설계:
+   - API 엔드포인트
+   - 데이터베이스 스키마
+   - 보안 고려사항
 
-3. [executor] Implement:
-   - Backend API
-   - Frontend UI
-   - Email service
+3. [executor] 구현:
+   - 백엔드 API
+   - 프론트엔드 UI
+   - 이메일 서비스
 
-4. [tester] Tests:
-   - Unit tests
-   - Integration tests
-   - E2E tests
+4. [tester] 테스트:
+   - 단위 테스트
+   - 통합 테스트
+   - E2E 테스트
 
-5. [reviewer] Review:
-   - Security check
-   - Code quality
-   - Best practices
+5. [reviewer] 리뷰:
+   - 보안 체크
+   - 코드 품질
+   - 베스트 프랙티스
 
-6. [writer] Document:
-   - API docs
-   - README update
+6. [writer] 문서화:
+   - API 문서
+   - README 업데이트
 
-7. Ralph loop:
-   - All tests pass ✓
-   - Done
+7. Ralph 루프:
+   - 모든 테스트 통과 ✓
+   - 완료
 ```
 
-## Tips
+## 팁
 
-- **Clear requirements** = better results
-- **Complex features** benefit most
-- **Automatic quality** checks included
-- **Full documentation** generated
+- **명확한 요구사항** = 더 나은 결과
+- **복잡한 기능**에 가장 효과적
+- **자동 품질** 검사 포함
+- **완전한 문서화** 생성

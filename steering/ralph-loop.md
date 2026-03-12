@@ -1,49 +1,49 @@
-# Ralph Loop
+# Ralph 루프
 
-Automatic verification and iteration until task completion.
+작업 완료까지 자동 검증 및 반복.
 
-## Process
-
-```
-Execute → Verify → Issues? → Fix → Verify → Done
-```
-
-## Verification Methods
-
-**Code Changes:**
-- Run tests: `npm test` or equivalent
-- Check syntax: TypeScript/ESLint
-- Manual verification if needed
-
-**Bug Fixes:**
-- Reproduce bug → Verify fixed
-- Run regression tests
-- Check related functionality
-
-**New Features:**
-- Test all paths
-- Check edge cases
-- Verify requirements met
-
-## Iteration
-
-- **Max 5 iterations** - If not resolved, report to user
-- **Auto-fix** - Delegate to appropriate subagent
-- **Fast feedback** - Quick verification cycles
-
-## Example
+## 프로세스
 
 ```
-1. executor implements feature
-2. Run tests → 2 failures
-3. debugger fixes issues
-4. Run tests → All pass ✓
-5. Done
+실행 → 검증 → 문제? → 수정 → 검증 → 완료
 ```
 
-## Important
+## 검증 방법
 
-- **Fast iterations** - Quick verify-fix cycles
-- **Clear feedback** - Show what failed and why
-- **Auto-resolve** - Fix issues without user intervention
-- **Know when to stop** - Max 5 iterations, then escalate
+**코드 변경:**
+- 테스트 실행: `npm test` 또는 동등한 명령
+- 문법 체크: TypeScript/ESLint
+- 필요시 수동 검증
+
+**버그 수정:**
+- 버그 재현 → 수정 확인
+- 회귀 테스트 실행
+- 관련 기능 확인
+
+**새 기능:**
+- 모든 경로 테스트
+- 엣지 케이스 확인
+- 요구사항 충족 검증
+
+## 반복
+
+- **최대 5회 반복** - 해결 안 되면 사용자에게 보고
+- **자동 수정** - 적절한 서브에이전트에게 위임
+- **빠른 피드백** - 신속한 검증 사이클
+
+## 예시
+
+```
+1. executor가 기능 구현
+2. 테스트 실행 → 2개 실패
+3. debugger가 문제 수정
+4. 테스트 실행 → 모두 통과 ✓
+5. 완료
+```
+
+## 중요
+
+- **빠른 반복** - 신속한 검증-수정 사이클
+- **명확한 피드백** - 무엇이 실패했고 왜 실패했는지 표시
+- **자동 해결** - 사용자 개입 없이 문제 수정
+- **중단 시점 파악** - 최대 5회 반복 후 에스컬레이션

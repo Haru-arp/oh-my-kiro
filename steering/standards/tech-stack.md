@@ -1,83 +1,83 @@
-# Technology Stack
+# 기술 스택
 
-## Frontend
+## 프론트엔드
 
-**Core:**
+**핵심:**
 - React 18
 - TypeScript
 - Vite
 
-**Styling:**
+**스타일링:**
 - Tailwind CSS
-- shadcn/ui components
+- shadcn/ui 컴포넌트
 
-**State:**
-- React hooks (useState, useEffect, etc.)
-- Context API for global state
-- TanStack Query for server state
+**상태:**
+- React hooks (useState, useEffect 등)
+- Context API (전역 상태)
+- TanStack Query (서버 상태)
 
-**Forms:**
+**폼:**
 - React Hook Form
-- Zod validation
+- Zod 유효성 검사
 
-## Backend
+## 백엔드
 
-**Runtime:**
+**런타임:**
 - Node.js 20+
 - TypeScript
 
-**Framework:**
-- Express or Fastify
+**프레임워크:**
+- Express 또는 Fastify
 
-**Database:**
+**데이터베이스:**
 - PostgreSQL
 - Prisma ORM
 
-**Auth:**
-- JWT tokens
-- bcrypt for passwords
+**인증:**
+- JWT 토큰
+- bcrypt (비밀번호)
 
-## Testing
+## 테스트
 
-**Unit/Integration:**
+**단위/통합:**
 - Jest
 - React Testing Library
 
 **E2E:**
 - Playwright
 
-## Tools
+## 도구
 
-**Development:**
+**개발:**
 - ESLint
 - Prettier
 - TypeScript
 
-**Design:**
-- Figma (use MCP for design access)
+**디자인:**
+- Figma (MCP로 디자인 접근)
 
-**Version Control:**
+**버전 관리:**
 - Git
 - GitHub
 
-## File Structure
+## 파일 구조
 
 ```
 src/
 ├── components/
-│   ├── ui/              # shadcn/ui components
-│   └── features/        # Feature components
-├── lib/                 # Utilities
-├── hooks/               # Custom hooks
-├── types/               # TypeScript types
-├── api/                 # API client
-└── app/                 # Pages/routes
+│   ├── ui/              # shadcn/ui 컴포넌트
+│   └── features/        # 기능 컴포넌트
+├── lib/                 # 유틸리티
+├── hooks/               # 커스텀 훅
+├── types/               # TypeScript 타입
+├── api/                 # API 클라이언트
+└── app/                 # 페이지/라우트
 ```
 
-## Conventions
+## 규칙
 
-- **TypeScript** for all code
-- **Functional components** with hooks
-- **Tailwind** for styling
-- **shadcn/ui** for UI components
-- **Prisma** for database
+- **TypeScript** 모든 코드
+- **함수형 컴포넌트** + hooks
+- **Tailwind** 스타일링
+- **shadcn/ui** UI 컴포넌트
+- **Prisma** 데이터베이스

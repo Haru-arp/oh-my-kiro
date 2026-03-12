@@ -1,70 +1,70 @@
-# Implementation Guide
+# 구현 가이드
 
-Quick reference for code implementation.
+코드 구현을 위한 빠른 참조.
 
-## Before You Start
+## 시작하기 전에
 
-- [ ] Understand requirements
-- [ ] Check existing code
-- [ ] Review project standards
+- [ ] 요구사항 이해
+- [ ] 기존 코드 확인
+- [ ] 프로젝트 표준 검토
 
-## Implementation
+## 구현
 
-### 1. Plan Approach
-- Choose appropriate patterns
-- Consider edge cases
-- Think about testing
+### 1. 접근 방식 계획
+- 적절한 패턴 선택
+- 엣지 케이스 고려
+- 테스트 고려
 
-### 2. Write Code
-- Follow project conventions
-- Use established patterns
-- Handle errors properly
-- Add comments for complex logic
+### 2. 코드 작성
+- 프로젝트 규칙 따르기
+- 확립된 패턴 사용
+- 오류 적절히 처리
+- 복잡한 로직에 주석 추가
 
-### 3. Test
-- Manual testing
-- Run existing tests
-- Add new tests if needed
+### 3. 테스트
+- 수동 테스트
+- 기존 테스트 실행
+- 필요시 새 테스트 추가
 
-### 4. Review
-- Check code quality
-- Verify best practices
-- Ensure maintainability
+### 4. 리뷰
+- 코드 품질 확인
+- 베스트 프랙티스 검증
+- 유지보수성 보장
 
-## Quick Checks
+## 빠른 체크
 
-✓ Follows tech stack (`.kiro/steering/standards/tech-stack.md`)
-✓ Follows code style (`.kiro/steering/standards/code-style.md`)
-✓ Handles errors
-✓ Works as expected
-✓ Tests pass
+✓ 기술 스택 준수 (`.kiro/steering/standards/tech-stack.md`)
+✓ 코드 스타일 준수 (`.kiro/steering/standards/code-style.md`)
+✓ 오류 처리
+✓ 예상대로 작동
+✓ 테스트 통과
 
-## Common Patterns
+## 일반 패턴
 
-**React Component:**
+**React 컴포넌트:**
 ```typescript
 export function MyComponent({ prop }: Props) {
-  // State
+  // 상태
   const [state, setState] = useState();
   
-  // Effects
+  // 효과
   useEffect(() => {}, []);
   
-  // Handlers
+  // 핸들러
   const handleClick = () => {};
   
-  // Render
+  // 렌더
   return <div>...</div>;
 }
 ```
 
-**API Endpoint:**
+**API 엔드포인트:**
 ```typescript
 app.post('/api/resource', async (req, res) => {
   try {
-    // Validate
-    // Process
-    // Respond
+    // 검증
+    // 처리
+    // 응답
     res.json({ success: true, data });
   } catch (error) {
     res.status(500).json({ success: false, error });
