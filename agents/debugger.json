@@ -3,13 +3,14 @@
   "description": "Bug fixing and error resolution specialist",
   "prompt": "file://~/.kiro/prompts/debugger.md",
   "tools": [
+    "@*",
+    "@omk-messages",
+    "code",
+    "execute_bash",
     "fs_read",
     "fs_write",
-    "code",
-    "grep",
     "glob",
-    "execute_bash",
-    "@omk-messages"
+    "grep"
   ],
   "allowedTools": [
     "fs_read",

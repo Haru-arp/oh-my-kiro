@@ -3,9 +3,9 @@
   "description": "Oh My Kiro orchestrator with Ralph loop and skill execution",
   "prompt": "file://~/.kiro/prompts/omk_orchestrator.md",
   "tools": [
-    "use_subagent",
+    "@*",
     "@omk-messages",
-    "@*"
+    "use_subagent"
   ],
   "allowedTools": [
     "use_subagent",

@@ -3,11 +3,12 @@
   "description": "System architecture and design specialist",
   "prompt": "file://~/.kiro/prompts/architect.md",
   "tools": [
-    "fs_read",
+    "@*",
+    "@omk-messages",
     "code",
-    "grep",
+    "fs_read",
     "glob",
-    "@omk-messages"
+    "grep"
   ],
   "allowedTools": [
     "fs_read",

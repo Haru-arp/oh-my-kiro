@@ -3,11 +3,12 @@
   "description": "Task planning and breakdown specialist",
   "prompt": "file://~/.kiro/prompts/planner.md",
   "tools": [
-    "fs_read",
+    "@*",
+    "@omk-messages",
     "code",
-    "grep",
+    "fs_read",
     "glob",
-    "@omk-messages"
+    "grep"
   ],
   "allowedTools": [
     "fs_read",

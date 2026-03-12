@@ -3,11 +3,12 @@
   "description": "Documentation and technical writing specialist",
   "prompt": "file://~/.kiro/prompts/writer.md",
   "tools": [
+    "@*",
+    "@omk-messages",
     "fs_read",
     "fs_write",
-    "grep",
     "glob",
-    "@omk-messages"
+    "grep"
   ],
   "allowedTools": [
     "fs_read",
