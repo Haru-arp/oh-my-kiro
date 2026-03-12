@@ -1,0 +1,22 @@
+{
+  "name": "documenter",
+  "description": "Automatic documentation generation after implementation",
+  "prompt": "file://~/.kiro/prompts/documenter.md",
+  "model": "claude-haiku-4-20250514",
+  "tools": [
+    "fs_read",
+    "fs_write",
+    "code",
+    "grep",
+    "glob",
+    "@*"
+  ],
+  "allowedTools": [
+    "fs_read",
+    "fs_write",
+    "code",
+    "grep",
+    "glob",
+    "@*"
+  ]
+}

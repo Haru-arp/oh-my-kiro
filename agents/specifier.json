@@ -1,0 +1,22 @@
+{
+  "name": "specifier",
+  "description": "Detailed specification and design document creation",
+  "prompt": "file://~/.kiro/prompts/specifier.md",
+  "model": "claude-opus-4-20250514",
+  "tools": [
+    "fs_read",
+    "fs_write",
+    "code",
+    "grep",
+    "glob",
+    "@*"
+  ],
+  "allowedTools": [
+    "fs_read",
+    "fs_write",
+    "code",
+    "grep",
+    "glob",
+    "@*"
+  ]
+}
