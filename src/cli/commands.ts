@@ -333,21 +333,22 @@ async function createCliSettings(basePath: string, force?: boolean) {
   let cliSettings: any = {};
 
   if (existsSync(cliJsonPath)) {
-    if (!force) {
-      console.log(`⊘ cli.json (이미 존재)`);
-      return;
-    }
     cliSettings = JSON.parse(readFileSync(cliJsonPath, 'utf-8'));
   }
 
-  // Remove defaultAgent if exists - keep kiro_default
-  // Users can call @omk_orchestrator when needed
+  // Always remove defaultAgent if it's omk_orchestrator
+  // Users should call @omk_orchestrator when needed
   if (cliSettings['chat.defaultAgent'] === 'omk_orchestrator') {
     delete cliSettings['chat.defaultAgent'];
+    writeFileSync(cliJsonPath, JSON.stringify(cliSettings, null, 2));
+    console.log(`✓ cli.json (omk_orchestrator 제거, @omk_orchestrator로 호출 가능)`);
+  } else if (!existsSync(cliJsonPath)) {
+    // Create empty cli.json if doesn't exist
+    writeFileSync(cliJsonPath, JSON.stringify(cliSettings, null, 2));
+    console.log(`✓ cli.json (생성)`);
+  } else {
+    console.log(`⊘ cli.json (이미 올바름)`);
   }
-  
-  writeFileSync(cliJsonPath, JSON.stringify(cliSettings, null, 2));
-  console.log(`✓ cli.json (기본 에이전트: kiro_default, @omk_orchestrator로 호출 가능)`);
 }
 
 async function createMcpSettings(basePath: string, force?: boolean) {
