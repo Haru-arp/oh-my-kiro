@@ -1,7 +1,7 @@
 {
-  "name": "omk_orchestrator",
+  "name": "omk",
   "description": "Oh My Kiro orchestrator with Ralph loop and skill execution",
-  "prompt": "file://~/.kiro/prompts/omk_orchestrator.md",
+  "prompt": "file://~/.kiro/prompts/omk.md",
   "tools": [
     "@*",
     "@omk-messages",

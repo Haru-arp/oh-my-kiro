@@ -73,12 +73,12 @@ export async function setup(options: SetupOptions = {}) {
   console.log(`\n✅ Oh My Kiro v2 설치 완료!\n`);
   console.log('사용 방법:');
   console.log('  1. kiro-cli chat  (기본: kiro_default)');
-  console.log('  2. @omk_orchestrator <작업>  (OMK 호출)');
+  console.log('  2. @omk <작업>  (OMK 호출)');
   console.log('  3. 스킬: $team, $autopilot, $plan, $tdd');
   console.log('  4. 워커 통신: send_message, read_messages\n');
   console.log('예시:');
-  console.log('  > @omk_orchestrator 3개 모듈 병렬 리팩토링');
-  console.log('  > @omk_orchestrator $team 3:executor 작업\n');
+  console.log('  > @omk 3개 모듈 병렬 리팩토링');
+  console.log('  > @omk $team 3:executor 작업\n');
 }
 
 interface UninstallOptions {
@@ -142,7 +142,7 @@ export async function uninstall(options: UninstallOptions = {}) {
     if (existsSync(cliJsonPath)) {
       try {
         const settings = JSON.parse(readFileSync(cliJsonPath, 'utf-8'));
-        if (settings['chat.defaultAgent'] === 'omk_orchestrator') {
+        if (settings['chat.defaultAgent'] === 'omk') {
           delete settings['chat.defaultAgent'];
           writeFileSync(cliJsonPath, JSON.stringify(settings, null, 2));
           console.log(`✓ cli.json에서 defaultAgent 제거`);
@@ -278,9 +278,9 @@ async function installAgentsMd(projectRoot: string, force?: boolean) {
 
 This project uses Oh My Kiro v2 orchestration system.
 
-## Orchestrator (omk_orchestrator)
+## Orchestrator (omk)
 
-The omk_orchestrator agent orchestrates work using:
+The omk agent orchestrates work using:
 - **Subagent delegation** via use_subagent
 - **Ralph loop** for verification and iteration
 - **Skills** for complex workflows (\`$team\`, \`$autopilot\`, \`$plan\`, \`$tdd\`)
@@ -336,12 +336,12 @@ async function createCliSettings(basePath: string, force?: boolean) {
     cliSettings = JSON.parse(readFileSync(cliJsonPath, 'utf-8'));
   }
 
-  // Always remove defaultAgent if it's omk_orchestrator
-  // Users should call @omk_orchestrator when needed
-  if (cliSettings['chat.defaultAgent'] === 'omk_orchestrator') {
+  // Always remove defaultAgent if it's omk
+  // Users should call @omk when needed
+  if (cliSettings['chat.defaultAgent'] === 'omk') {
     delete cliSettings['chat.defaultAgent'];
     writeFileSync(cliJsonPath, JSON.stringify(cliSettings, null, 2));
-    console.log(`✓ cli.json (omk_orchestrator 제거, @omk_orchestrator로 호출 가능)`);
+    console.log(`✓ cli.json (omk 제거, @omk로 호출 가능)`);
   } else if (!existsSync(cliJsonPath)) {
     // Create empty cli.json if doesn't exist
     writeFileSync(cliJsonPath, JSON.stringify(cliSettings, null, 2));
