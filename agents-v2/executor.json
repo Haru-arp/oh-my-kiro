@@ -1,0 +1,32 @@
+{
+  "name": "executor",
+  "description": "Code implementation specialist with full tool access",
+  "prompt": "file://.kiro/prompts/executor.md",
+  "tools": [
+    "fs_read",
+    "fs_write",
+    "code",
+    "grep",
+    "glob",
+    "execute_bash"
+  ],
+  "allowedTools": [
+    "fs_read",
+    "fs_write",
+    "code",
+    "grep",
+    "glob",
+    "execute_bash",
+    "@*"
+  ],
+  "toolsSettings": {
+    "execute_bash": {
+      "autoAllowReadonly": true
+    }
+  },
+  "resources": [
+    "file://.kiro/steering/**/*.md"
+  ],
+  "includeMcpJson": true,
+  "model": "claude-opus-4.6"
+}

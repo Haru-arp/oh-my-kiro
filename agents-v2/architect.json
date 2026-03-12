@@ -1,0 +1,22 @@
+{
+  "name": "architect",
+  "description": "System architecture and design specialist",
+  "prompt": "file://.kiro/prompts/architect.md",
+  "tools": [
+    "fs_read",
+    "code",
+    "grep",
+    "glob"
+  ],
+  "allowedTools": [
+    "fs_read",
+    "code",
+    "grep",
+    "glob"
+  ],
+  "resources": [
+    "file://.kiro/steering/**/*.md"
+  ],
+  "includeMcpJson": true,
+  "model": "claude-opus-4.6"
+}

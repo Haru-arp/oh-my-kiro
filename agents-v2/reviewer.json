@@ -1,0 +1,22 @@
+{
+  "name": "reviewer",
+  "description": "Code review and quality assurance specialist",
+  "prompt": "file://.kiro/prompts/reviewer.md",
+  "tools": [
+    "fs_read",
+    "code",
+    "grep",
+    "glob"
+  ],
+  "allowedTools": [
+    "fs_read",
+    "code",
+    "grep",
+    "glob"
+  ],
+  "resources": [
+    "file://.kiro/steering/**/*.md"
+  ],
+  "includeMcpJson": true,
+  "model": "claude-sonnet-4.5"
+}
