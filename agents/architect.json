@@ -1,7 +1,7 @@
 {
   "name": "architect",
   "description": "System architecture and design specialist",
-  "prompt": "file://.kiro/prompts/architect.md",
+  "prompt": "file://~/.kiro/prompts/architect.md",
   "tools": [
     "fs_read",
     "code",

@@ -1,7 +1,7 @@
 {
   "name": "executor",
   "description": "Code implementation specialist with full tool access",
-  "prompt": "file://.kiro/prompts/executor.md",
+  "prompt": "file://~/.kiro/prompts/executor.md",
   "tools": [
     "fs_read",
     "fs_write",

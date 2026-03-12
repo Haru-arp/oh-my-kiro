@@ -1,7 +1,7 @@
 {
   "name": "writer",
   "description": "Documentation and technical writing specialist",
-  "prompt": "file://.kiro/prompts/writer.md",
+  "prompt": "file://~/.kiro/prompts/writer.md",
   "tools": [
     "fs_read",
     "fs_write",

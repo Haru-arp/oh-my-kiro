@@ -1,7 +1,7 @@
 {
   "name": "tester",
   "description": "Test design and execution specialist",
-  "prompt": "file://.kiro/prompts/tester.md",
+  "prompt": "file://~/.kiro/prompts/tester.md",
   "tools": [
     "fs_read",
     "fs_write",
